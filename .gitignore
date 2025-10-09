@@ -1,0 +1,6 @@
+echo "/build/" >> .gitignore
+echo "*.iml" >> .gitignore
+echo ".idea/" >> .gitignore
+echo ".gradle/" >> .gitignore
+echo "local.properties" >> .gitignore
+echo "*.apk" >> .gitignore

@@ -1,0 +1,24 @@
+(undo-tree-save-format-version . 1)
+"b60f87d04594f229eec721f60940eb8ff35dc39e"
+[nil nil nil nil (26855 53598 856700 361000) 0 nil]
+([nil nil ((nil rear-nonsticky nil 577 . 578) (nil fontified nil 1 . 578) (1 . 578) (t . -1)) nil (26855 53598 856696 716000) 0 nil])
+([nil nil ((#("    <application
+        android:allowBackup=\"true\"
+        android:label=\"JP Verb Cards\"
+        android:theme=\"@style/Theme.Material3.DayNight.NoActionBar\">
+" 0 4 (fontified t) 4 5 (face (nxml-tag-delimiter) fontified t) 5 16 (face (nxml-element-local-name) fontified t) 16 25 (fontified t) 25 32 (face (nxml-attribute-prefix) fontified t) 32 33 (face (nxml-attribute-colon) fontified t) 33 44 (face (nxml-attribute-local-name) fontified t) 44 45 (fontified t) 45 51 (face font-lock-string-face fontified t) 51 60 (fontified t) 60 67 (face (nxml-attribute-prefix) fontified t) 67 68 (face (nxml-attribute-colon) fontified t) 68 73 (face (nxml-attribute-local-name) fontified t) 73 74 (fontified t) 74 89 (face font-lock-string-face fontified t) 89 98 (fontified t) 98 105 (face (nxml-attribute-prefix) fontified t) 105 106 (face (nxml-attribute-colon) fontified t) 106 111 (face (nxml-attribute-local-name) fontified t) 111 112 (fontified t) 112 157 (face font-lock-string-face fontified t) 157 158 (face (nxml-tag-delimiter) fontified t) 158 159 (fontified t)) . -71) (undo-tree-id4 . -159) (undo-tree-id5 . -159) 230 (t 26855 53598 856872 976000)) nil (26855 56648 582493 694000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 216 . 217) (nil fontified nil 71 . 217) (71 . 217)) nil (26855 56648 582492 283000) 0 nil])
+([nil nil ((71 . 73)) nil (26855 56648 582491 910000) 0 nil])
+([nil nil ((90 . 92) 88) nil (26855 56648 582491 643000) 0 nil])
+([nil nil ((123 . 125) 125) nil (26855 56648 582491 309000) 0 nil])
+([nil nil ((159 . 161) 163) nil (26855 56648 582490 948000) 0 nil])
+([nil nil ((#("    " 0 4 (fontified t)) . -229) 235) nil (26855 56648 582490 564000) 0 nil])
+([nil nil ((#("    " 0 4 (fontified t)) . -247) 245) nil (26855 56648 582489 913000) 0 nil])
+([nil nil ((#("    " 0 4 (fontified t)) . -284)) nil (26855 56648 582489 316000) 0 nil])
+([nil nil ((#("      " 0 6 (fontified t)) . -315) (undo-tree-id3 . -2) 317) nil (26855 56648 582488 881000) 0 nil])
+([nil nil ((#("        " 0 8 (fontified t)) . -339) 337) nil (26855 56648 582487 735000) 0 nil])
+([nil nil ((#("        " 0 8 (fontified t)) . -399)) nil (26855 56648 582486 965000) 0 nil])
+([nil nil ((#("      " 0 6 (fontified t)) . -465) (undo-tree-id2 . -2) 467) nil (26855 56648 582486 484000) 0 nil])
+([nil nil ((#("    " 0 4 (fontified t)) . -486) (undo-tree-id1 . -2) 488) nil (26855 56648 582485 380000) 0 nil])
+([nil current ((#("  " 0 2 (fontified t)) . -500) (undo-tree-id0 . -2) 502) nil (26855 56648 582481 905000) 0 nil])
+nil

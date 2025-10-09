@@ -1,0 +1,38 @@
+(undo-tree-save-format-version . 1)
+"89ca19e36edde37c2eac2848527bcee38fe5f890"
+[nil nil nil nil (26855 54485 215218 887000) 0 nil]
+([nil nil ((" " . 1) ("m" . 1) ("j" . 1) (t 26855 54442 773914 780000)) nil (26855 54497 800555 862000) 0 nil] [nil nil ((1 . 182) (t 26855 54442 773914 780000)) (("plugins {
+    id(\"com.android.application\") version \"8.6.1\"
+    id(\"org.jetbrains.kotlin.android\") version \"2.0.21\"
+    id(\"org.jetbrains.kotlin.plugin.compose\") version \"2.0.21\"
+}
+" . 1) (undo-tree-id0 . -181)) (26855 54485 214646 651000) 0 nil])
+([nil nil (("plugins {
+    id(\"com.android.application\") version \"8.6.1\"
+    id(\"org.jetbrains.kotlin.android\") version \"2.0.21\"
+}
+" . -1) (undo-tree-id0 . -118) (undo-tree-id1 . -53) (undo-tree-id2 . -53) (undo-tree-id3 . -53) (undo-tree-id4 . -53) (undo-tree-id5 . -53) (undo-tree-id6 . -53) 119 (t 26855 54497 800928 501000)) nil (26855 54553 10775 754000) 0 nil])
+nil
+([nil nil ((1 . 182)) nil (26855 54553 10756 781000) 0 nil])
+([nil nil (("    " . 260) (undo-tree-id0 . -4) (undo-tree-id1 . -4) (259 . 265) (t 26855 54553 11959 226000)) nil (26855 56790 17035 609000) 0 nil])
+([nil nil (("
+" . -260) (undo-tree-id4 . -1) (undo-tree-id5 . -1) 261) nil (26855 56839 611583 504000) 0 nil] [nil nil ((261 . 417)) (("compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+kotlinOptions {
+    jvmTarget = \"17\"
+}
+" . 261)) (26855 56789 553173 929000) 0 nil])
+([nil nil ((779 . 784)) nil (26855 56839 611581 985000) 0 nil])
+([nil nil ((261 . 265)) (("    " . 261)) (26855 56775 496164 964000) 0 nil])
+([nil nil ((784 . 940)) nil (26855 56839 611581 459000) 0 nil])
+([nil nil ((286 . 291)) (("		   " . 286)) (26855 56771 748764 516000) 0 nil])
+([nil current (("kotlinOptions {
+    jvmTarget = \"17\"
+}
+" . -901) (undo-tree-id3 . -39) 940) nil (26855 56839 611578 563000) 0 nil])
+([nil nil ((355 . 364)) (("		       " . 355)) (26855 56771 320376 805000) 0 nil])
+nil
+([nil nil ((395 . 398)) (("   " . 395) (undo-tree-id2 . -3)) (26855 56771 320330 554000) 0 nil])
+nil
