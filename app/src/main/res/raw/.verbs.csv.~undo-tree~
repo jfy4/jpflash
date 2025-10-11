@@ -1,5 +1,21 @@
 (undo-tree-save-format-version . 1)
-"a917606250a6e03d494a39d4f3202562dd3d5c5b"
+"7df5cb23efd4318185c8b5e5180a50c563245a29"
 [nil nil nil nil (26858 38931 353060 887000) 0 nil]
-([nil current ((1 . 367) (t . -1)) nil (26858 38931 353057 389000) 0 nil])
+([nil nil ((1 . 367) (t . -1)) nil (26858 38931 353057 389000) 0 nil])
+([nil nil ((1 . 2) (t 26858 38931 354125 827000)) nil (26858 39959 355793 792000) 0 nil])
+([nil nil ((1 . 574)) nil (26858 39959 355793 284000) 0 nil])
+([nil nil (("dictionary,hiragana,meaningEn,masu,mashita,masen
+行く,いく,to go,行きます,行きました,行きません
+来る,くる,to come,来ます,来ました,来ません
+する,する,to do,します,しました,しません
+食べる,たべる,to eat,食べます,食べました,食べません
+見る,みる,to see / watch,見ます,見ました,見ません
+読む,よむ,to read,読みます,読みました,読みません
+書く,かく,to write,書きます,書きました,書きません
+話す,はなす,to speak,話します,話しました,話しません
+聞く,きく,to listen / ask,聞きます,聞きました,聞きません
+飲む,のむ,to drink,飲みます,飲みました,飲みません
+" . -575) (undo-tree-id8 . -366) 941) nil (26858 39959 355792 699000) 0 nil])
+([nil current (("
+" . -574) (undo-tree-id0 . -1) (undo-tree-id1 . 1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) 575) nil (26858 39959 355789 567000) 0 nil])
 nil

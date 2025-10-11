@@ -42,13 +42,24 @@ class MainActivity : ComponentActivity() {
 
 // -------------------- Data Model --------------------
 data class VerbCard(
-    val dictionary: String,   // Kanji
-    val hiragana: String,     // Hiragana reading
-    val meaningEn: String,    // English translation
-    val masu: String,
-    val mashita: String,
-    val masen: String
+    val dictionary: String,   // Kanji dictionary form
+    val hiragana: String,     // Hiragana for dictionary form
+    val meaningEn: String,    // English meaning
+    val masu: String,         // Kanji ます form
+    val masuHiragana: String, // Hiragana ます form
+    val mashita: String,      // Kanji ました form
+    val mashitaHiragana: String, // Hiragana ました form
+    val masen: String,        // Kanji ません form
+    val masenHiragana: String // Hiragana ません form
 )
+// data class VerbCard(
+//     val dictionary: String,   // Kanji
+//     val hiragana: String,     // Hiragana reading
+//     val meaningEn: String,    // English translation
+//     val masu: String,
+//     val mashita: String,
+//     val masen: String
+// )
 
 // val SampleDeck = listOf(
 //     VerbCard("行く", "いく", "to go", "行きます", "行きました", "行きません"),
@@ -90,20 +101,23 @@ fun loadVerbDeck(context: Context): List<VerbCard> {
     val inputStream = context.resources.openRawResource(R.raw.verbs)
     val reader = BufferedReader(InputStreamReader(inputStream))
 
-    // Skip the header line
+    // Skip header
     reader.readLine()
 
     reader.forEachLine { line ->
         val parts = line.split(",")
-        if (parts.size >= 6) {
+        if (parts.size >= 9) {
             verbs.add(
                 VerbCard(
                     dictionary = parts[0].trim(),
                     hiragana = parts[1].trim(),
                     meaningEn = parts[2].trim(),
                     masu = parts[3].trim(),
-                    mashita = parts[4].trim(),
-                    masen = parts[5].trim()
+                    masuHiragana = parts[4].trim(),
+                    mashita = parts[5].trim(),
+                    mashitaHiragana = parts[6].trim(),
+                    masen = parts[7].trim(),
+                    masenHiragana = parts[8].trim()
                 )
             )
         }
@@ -112,6 +126,34 @@ fun loadVerbDeck(context: Context): List<VerbCard> {
     reader.close()
     return verbs
 }
+
+// fun loadVerbDeck(context: Context): List<VerbCard> {
+//     val verbs = mutableListOf<VerbCard>()
+//     val inputStream = context.resources.openRawResource(R.raw.verbs)
+//     val reader = BufferedReader(InputStreamReader(inputStream))
+
+//     // Skip the header line
+//     reader.readLine()
+
+//     reader.forEachLine { line ->
+//         val parts = line.split(",")
+//         if (parts.size >= 6) {
+//             verbs.add(
+//                 VerbCard(
+//                     dictionary = parts[0].trim(),
+//                     hiragana = parts[1].trim(),
+//                     meaningEn = parts[2].trim(),
+//                     masu = parts[3].trim(),
+//                     mashita = parts[4].trim(),
+//                     masen = parts[5].trim()
+//                 )
+//             )
+//         }
+//     }
+
+//     reader.close()
+//     return verbs
+// }
 
 
 // -------------------- UI --------------------
@@ -139,6 +181,38 @@ fun FuriganaText(
         )
     }
 }
+
+@Composable
+fun EntryFurigana(label: String, kanji: String, hiragana: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            label,
+            color = Color(0xFF9AA0A6),
+            fontSize = 18.sp
+        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = hiragana,
+                color = Color(0xFFB0BEC5),
+                fontSize = 16.sp, // slightly smaller
+                lineHeight = 16.sp
+            )
+            Text(
+                text = kanji,
+                color = Color(0xFFECEFF1),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
+    }
+}
+
 
 @Composable
 fun App(deck: List<VerbCard>) {
@@ -328,12 +402,35 @@ fun BackFace(card: VerbCard) {
             fontSize = 28.sp,
             fontWeight = FontWeight.SemiBold
         )
-        Spacer(Modifier.height(20.dp))
-        Entry("ます形", card.masu)
-        Entry("ました形", card.mashita)
-        Entry("ません形", card.masen)
+        Spacer(Modifier.height(24.dp))
+        EntryFurigana("ます形", card.masu, card.masuHiragana)
+        EntryFurigana("ました形", card.mashita, card.mashitaHiragana)
+        EntryFurigana("ません形", card.masen, card.masenHiragana)
     }
 }
+
+// @Composable
+// fun BackFace(card: VerbCard) {
+//     Column(
+//         modifier = Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF21262C))
+//             .padding(24.dp),
+//         verticalArrangement = Arrangement.Center,
+//         horizontalAlignment = Alignment.Start
+//     ) {
+//         Text(
+//             text = card.meaningEn,
+//             color = Color.White,
+//             fontSize = 28.sp,
+//             fontWeight = FontWeight.SemiBold
+//         )
+//         Spacer(Modifier.height(20.dp))
+//         Entry("ます形", card.masu)
+//         Entry("ました形", card.mashita)
+//         Entry("ません形", card.masen)
+//     }
+// }
 
 // @Composable
 // fun BackFace(card: VerbCard) {
