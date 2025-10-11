@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"56eb2f19b7577d6363c40d53e850a0a9f2fb7405"
+"0b3ab4839c0b9b590e641dc70b45e08e810b3f48"
 [nil nil nil nil (26855 53630 297923 383000) 0 nil]
 ([nil nil ((1 . 9216) (t . -1)) nil (26855 53630 297920 68000) 0 nil])
 ([nil nil ((410 . 411) (t 26855 53630 310415 765000)) nil (26855 58210 473224 386000) 0 nil])
@@ -292,6 +292,34 @@ private fun Entry(label: String, value: String) {
 ([nil nil ((1 . 8176)) nil (26855 58838 535718 471000) 0 nil])
 ([nil nil ((5620 . 5625) (t 26855 58838 539572 127000)) nil (26855 58948 893630 814000) 0 nil])
 ([nil nil ((5625 . 5690)) nil (26855 58948 893630 288000) 0 nil])
-([nil current (("    val cameraDistance = 16 * Density(1f).density
-" . -5571) (undo-tree-id0 . -50) (undo-tree-id1 . -49) (undo-tree-id2 . -49) (undo-tree-id3 . -49) (undo-tree-id4 . -49) (undo-tree-id5 . -49) (undo-tree-id6 . 1) 5621) nil (26855 58948 893627 727000) 0 nil])
+([nil nil (("    val cameraDistance = 16 * Density(1f).density
+" . -5571) (undo-tree-id0 . -50) (undo-tree-id1 . -49) (undo-tree-id2 . -49) (undo-tree-id3 . -49) (undo-tree-id4 . -49) (undo-tree-id5 . -49) (undo-tree-id6 . 1) 5621) nil (26858 38145 241108 893000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1693 . 1694) (nil fontified nil 1460 . 1694) (1460 . 1694) (t 26855 58948 894809 104000)) nil (26858 38352 539917 236000) 0 nil] [nil nil ((1 . 2) (t 26855 58948 894809 104000)) ((#("^" 0 1 (fontified t)) . 1) (undo-tree-id0 . -1)) (26858 38145 240834 4000) 0 nil])
+([nil nil ((apply -27 1694 1905 undo--wrap-and-run-primitive-undo 1694 1905 ((1899 . 1902) (1875 . 1878) (1852 . 1855) (1829 . 1832) (1804 . 1807) (1774 . 1777) (1749 . 1752) (1718 . 1721) (1694 . 1697) 1877))) nil (26858 38352 539916 655000) 0 nil])
+nil
+([nil nil ((#("// data class VerbCard(
+//     val dictionary: String,
+//     val stem: String,
+//     val meaningEn: String,
+//     val masu: String,
+//     val te: String,
+//     val ta: String,
+//     val nai: String,
+// )
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 7 (face font-lock-comment-face fontified t) 7 8 (face font-lock-comment-face fontified t) 8 13 (face font-lock-comment-face fontified t) 13 14 (face font-lock-comment-face fontified t) 14 22 (face font-lock-comment-face fontified t) 22 24 (face font-lock-comment-face fontified t) 24 27 (face font-lock-comment-delimiter-face fontified t) 27 31 (face font-lock-comment-delimiter-face fontified t) 31 34 (face font-lock-comment-face fontified t) 34 35 (face font-lock-comment-face fontified t) 35 45 (face font-lock-variable-name-face fontified t) 45 47 (face font-lock-comment-face fontified t) 47 53 (face font-lock-comment-face fontified t) 53 55 (face font-lock-comment-face fontified t) 55 58 (face font-lock-comment-delimiter-face fontified t) 58 62 (face font-lock-comment-delimiter-face fontified t) 62 65 (face font-lock-comment-face fontified t) 65 66 (face font-lock-comment-face fontified t) 66 70 (face font-lock-variable-name-face fontified t) 70 72 (face font-lock-comment-face fontified t) 72 78 (face font-lock-comment-face fontified t) 78 80 (face font-lock-comment-face fontified t) 80 83 (face font-lock-comment-delimiter-face fontified t) 83 87 (face font-lock-comment-delimiter-face fontified t) 87 90 (face font-lock-comment-face fontified t) 90 91 (face font-lock-comment-face fontified t) 91 100 (face font-lock-variable-name-face fontified t) 100 102 (face font-lock-comment-face fontified t) 102 108 (face font-lock-comment-face fontified t) 108 110 (face font-lock-comment-face fontified t) 110 113 (face font-lock-comment-delimiter-face fontified t) 113 117 (face font-lock-comment-delimiter-face fontified t) 117 120 (face font-lock-comment-face fontified t) 120 121 (face font-lock-comment-face fontified t) 121 125 (face font-lock-variable-name-face fontified t) 125 127 (face font-lock-comment-face fontified t) 127 133 (face font-lock-comment-face fontified t) 133 135 (face font-lock-comment-face fontified t) 135 138 (face font-lock-comment-delimiter-face fontified t) 138 142 (face font-lock-comment-delimiter-face fontified t) 142 145 (face font-lock-comment-face fontified t) 145 146 (face font-lock-comment-face fontified t) 146 148 (face font-lock-variable-name-face fontified t) 148 150 (face font-lock-comment-face fontified t) 150 156 (face font-lock-comment-face fontified t) 156 158 (face font-lock-comment-face fontified t) 158 161 (face font-lock-comment-delimiter-face fontified t) 161 165 (face font-lock-comment-delimiter-face fontified t) 165 168 (face font-lock-comment-face fontified t) 168 169 (face font-lock-comment-face fontified t) 169 171 (face font-lock-variable-name-face fontified t) 171 173 (face font-lock-comment-face fontified t) 173 179 (face font-lock-comment-face fontified t) 179 181 (face font-lock-comment-face fontified t) 181 184 (face font-lock-comment-delimiter-face fontified t) 184 188 (face font-lock-comment-delimiter-face fontified t) 188 191 (face font-lock-comment-face fontified t) 191 192 (face font-lock-comment-face fontified t) 192 195 (face font-lock-variable-name-face fontified t) 195 197 (face font-lock-comment-face fontified t) 197 203 (face font-lock-comment-face fontified t) 203 205 (face font-lock-comment-face fontified t) 205 208 (face font-lock-comment-delimiter-face fontified t) 208 210 (face font-lock-comment-face fontified t)) . -1694) (undo-tree-id0 . -210) (undo-tree-id1 . -12) (undo-tree-id2 . -12) (undo-tree-id3 . -12) (undo-tree-id4 . -13) (undo-tree-id5 . -13) (undo-tree-id6 . -13) (undo-tree-id7 . -13) (undo-tree-id8 . -13) (undo-tree-id9 . -13) (undo-tree-id10 . -135) (undo-tree-id11 . -210) (undo-tree-id12 . -210) (undo-tree-id13 . -210) 1904) nil (26858 38352 539915 688000) 0 nil])
+([nil nil ((1694 . 1695)) nil (26858 38352 539898 642000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 2358 . 2359) (nil fontified nil 1695 . 2359) (1695 . 2359)) nil (26858 38352 539898 55000) 0 nil])
+([nil nil ((apply -63 2360 3729 undo--wrap-and-run-primitive-undo 2360 3729 ((3723 . 3726) (3654 . 3657) (3579 . 3582) (3508 . 3511) (3434 . 3437) (3368 . 3371) (3299 . 3302) (3229 . 3232) (3159 . 3162) (3090 . 3093) (3019 . 3022) (2941 . 2944) (2870 . 2873) (2799 . 2802) (2729 . 2732) (2657 . 2660) (2587 . 2590) (2524 . 2527) (2456 . 2459) (2388 . 2391) (2360 . 2363) 3665))) nil (26858 38352 539894 559000) 0 nil])
+([nil nil ((3776 . 3778) (t 26858 38352 542216 977000)) nil (26858 38397 508020 721000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 4327 . 4328) (nil fontified nil 3778 . 4328) (3778 . 4328)) nil (26858 38397 508020 61000) 0 nil])
+([nil nil ((#("
+" 0 1 (face font-lock-comment-face fontified t)) . -3776) (undo-tree-id14 . -1) (undo-tree-id15 . 1) (undo-tree-id16 . -1) (undo-tree-id17 . -1) (undo-tree-id18 . -1) 3777) nil (26858 38397 508017 153000) 0 nil])
+([nil nil ((7723 . 7724) (t 26858 38397 509909 102000)) nil (26858 38428 751057 947000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 8102 . 8103) (nil fontified nil 7723 . 8103) (7723 . 8103)) nil (26858 38428 751057 492000) 0 nil])
+([nil nil ((apply -84 8104 8999 undo--wrap-and-run-primitive-undo 8104 8999 ((8993 . 8996) (8984 . 8987) (8971 . 8974) (8939 . 8942) (8897 . 8900) (8851 . 8854) (8834 . 8837) (8792 . 8795) (8779 . 8782) (8735 . 8738) (8690 . 8693) (8655 . 8658) (8622 . 8625) (8586 . 8589) (8553 . 8556) (8536 . 8539) (8495 . 8498) (8423 . 8426) (8412 . 8415) (8360 . 8363) (8297 . 8300) (8265 . 8268) (8219 . 8222) (8189 . 8192) (8169 . 8172) (8154 . 8157) (8119 . 8122) (8104 . 8107) 8914))) nil (26858 38428 751150 651000) 0 nil])
+([nil nil ((8999 . 9000)) nil (26858 38448 591100 195000) 0 nil] [nil nil ((#("
+" 0 1 (fontified t)) . 8998) (undo-tree-id19 . -1)) ((8998 . 8999)) (26858 38428 751054 298000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 9600 . 9601) (nil fontified nil 8999 . 9601) (8999 . 9601)) nil (26858 38448 591099 531000) 0 nil])
+nil
+([nil current ((apply -69 9601 10273 undo--wrap-and-run-primitive-undo 9601 10273 ((10267 . 10270) (10258 . 10261) (10224 . 10227) (10192 . 10195) (10160 . 10163) (10125 . 10128) (10084 . 10087) (10042 . 10045) (10029 . 10032) (9981 . 9984) (9948 . 9951) (9912 . 9915) (9874 . 9877) (9857 . 9860) (9846 . 9849) (9794 . 9797) (9762 . 9765) (9716 . 9719) (9686 . 9689) (9666 . 9669) (9651 . 9654) (9617 . 9620) (9602 . 9605) 10203))) nil (26858 38448 591095 769000) 0 nil])
 nil

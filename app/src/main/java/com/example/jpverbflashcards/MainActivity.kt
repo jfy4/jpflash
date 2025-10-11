@@ -37,38 +37,75 @@ class MainActivity : ComponentActivity() {
 
 // -------------------- Data Model --------------------
 data class VerbCard(
-    val dictionary: String,
-    val stem: String,
-    val meaningEn: String,
+    val dictionary: String,   // Kanji
+    val hiragana: String,     // Hiragana reading
+    val meaningEn: String,    // English translation
     val masu: String,
-    val te: String,
-    val ta: String,
-    val nai: String,
+    val mashita: String,
+    val masen: String
 )
 
 val SampleDeck = listOf(
-    VerbCard("行く", "行き", "to go", "行きます", "行って", "行った", "行かない"),
-    VerbCard("来る", "来（き）", "to come", "来ます", "来て", "来た", "来ない"),
-    VerbCard("する", "し", "to do", "します", "して", "した", "しない"),
-    VerbCard("食べる", "食べ", "to eat", "食べます", "食べて", "食べた", "食べない"),
-    VerbCard("見る", "見", "to see / watch", "見ます", "見て", "見た", "見ない"),
-    VerbCard("読む", "読み", "to read", "読みます", "読んで", "読んだ", "読まない"),
-    VerbCard("書く", "書き", "to write", "書きます", "書いて", "書いた", "書かない"),
-    VerbCard("話す", "話し", "to speak", "話します", "話して", "話した", "話さない"),
-    VerbCard("聞く", "聞き", "to listen / ask", "聞きます", "聞いて", "聞いた", "聞かない"),
-    VerbCard("飲む", "飲み", "to drink", "飲みます", "飲んで", "飲んだ", "飲まない"),
-    VerbCard("買う", "買い", "to buy", "買います", "買って", "買った", "買わない"),
-    VerbCard("会う", "会い", "to meet", "会います", "会って", "会った", "会わない"),
-    VerbCard("歩く", "歩き", "to walk", "歩きます", "歩いて", "歩いた", "歩かない"),
-    VerbCard("走る", "走り", "to run", "走ります", "走って", "走った", "走らない"),
-    VerbCard("寝る", "寝", "to sleep", "寝ます", "寝て", "寝た", "寝ない"),
-    VerbCard("起きる", "起き", "to wake up", "起きます", "起きて", "起きた", "起きない"),
-    VerbCard("入る", "入り", "to enter", "入ります", "入って", "入った", "入らない"),
-    VerbCard("出る", "出", "to leave / go out", "出ます", "出て", "出た", "出ない"),
-    VerbCard("使う", "使い", "to use", "使います", "使って", "使った", "使わない"),
+    VerbCard("行く", "いく", "to go", "行きます", "行きました", "行きません"),
+    VerbCard("来る", "くる", "to come", "来ます", "来ました", "来ません"),
+    VerbCard("する", "する", "to do", "します", "しました", "しません"),
+    VerbCard("食べる", "たべる", "to eat", "食べます", "食べました", "食べません"),
+    VerbCard("見る", "みる", "to see / watch", "見ます", "見ました", "見ません"),
+    VerbCard("読む", "よむ", "to read", "読みます", "読みました", "読みません"),
+    VerbCard("書く", "かく", "to write", "書きます", "書きました", "書きません"),
+    VerbCard("話す", "はなす", "to speak", "話します", "話しました", "話しません"),
+    VerbCard("聞く", "きく", "to listen / ask", "聞きます", "聞きました", "聞きません"),
+    VerbCard("飲む", "のむ", "to drink", "飲みます", "飲みました", "飲みません"),
 )
 
+// val SampleDeck = listOf(
+//     VerbCard("行く", "行き", "to go", "行きます", "行って", "行った", "行かない"),
+//     VerbCard("来る", "来（き）", "to come", "来ます", "来て", "来た", "来ない"),
+//     VerbCard("する", "し", "to do", "します", "して", "した", "しない"),
+//     VerbCard("食べる", "食べ", "to eat", "食べます", "食べて", "食べた", "食べない"),
+//     VerbCard("見る", "見", "to see / watch", "見ます", "見て", "見た", "見ない"),
+//     VerbCard("読む", "読み", "to read", "読みます", "読んで", "読んだ", "読まない"),
+//     VerbCard("書く", "書き", "to write", "書きます", "書いて", "書いた", "書かない"),
+//     VerbCard("話す", "話し", "to speak", "話します", "話して", "話した", "話さない"),
+//     VerbCard("聞く", "聞き", "to listen / ask", "聞きます", "聞いて", "聞いた", "聞かない"),
+//     VerbCard("飲む", "飲み", "to drink", "飲みます", "飲んで", "飲んだ", "飲まない"),
+//     VerbCard("買う", "買い", "to buy", "買います", "買って", "買った", "買わない"),
+//     VerbCard("会う", "会い", "to meet", "会います", "会って", "会った", "会わない"),
+//     VerbCard("歩く", "歩き", "to walk", "歩きます", "歩いて", "歩いた", "歩かない"),
+//     VerbCard("走る", "走り", "to run", "走ります", "走って", "走った", "走らない"),
+//     VerbCard("寝る", "寝", "to sleep", "寝ます", "寝て", "寝た", "寝ない"),
+//     VerbCard("起きる", "起き", "to wake up", "起きます", "起きて", "起きた", "起きない"),
+//     VerbCard("入る", "入り", "to enter", "入ります", "入って", "入った", "入らない"),
+//     VerbCard("出る", "出", "to leave / go out", "出ます", "出て", "出た", "出ない"),
+//     VerbCard("使う", "使い", "to use", "使います", "使って", "使った", "使わない"),
+// )
+
 // -------------------- UI --------------------
+@Composable
+fun FuriganaText(
+    kanji: String,
+    hiragana: String
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = hiragana,
+            color = Color(0xFFB0BEC5),
+            fontSize = 22.sp,
+            lineHeight = 22.sp
+        )
+        Text(
+            text = kanji,
+            color = Color.White,
+            fontSize = 64.sp,
+            fontWeight = FontWeight.Bold,
+            lineHeight = 64.sp
+        )
+    }
+}
+
 @Composable
 fun App() {
     MaterialTheme(colorScheme = MaterialTheme.colorScheme) {
@@ -192,55 +229,92 @@ fun Flashcard(
 @Composable
 fun FrontFace(card: VerbCard) {
     Column(
-        Modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF28303A))
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("ます-stem", color = Color(0xFF9AA0A6), fontSize = 18.sp)
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = card.stem,
-            color = Color.White,
-            fontSize = 64.sp,
-            lineHeight = 64.sp,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = "（${card.dictionary}）",
-            color = Color(0xFFB0BEC5),
-            fontSize = 22.sp
-        )
+        FuriganaText(kanji = card.dictionary, hiragana = card.hiragana)
     }
 }
+
+// @Composable
+// fun FrontFace(card: VerbCard) {
+//     Column(
+//         Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF28303A))
+//             .padding(24.dp),
+//         horizontalAlignment = Alignment.CenterHorizontally,
+//         verticalArrangement = Arrangement.Center
+//     ) {
+//         Text("ます-stem", color = Color(0xFF9AA0A6), fontSize = 18.sp)
+//         Spacer(Modifier.height(8.dp))
+//         Text(
+//             text = card.stem,
+//             color = Color.White,
+//             fontSize = 64.sp,
+//             lineHeight = 64.sp,
+//             textAlign = TextAlign.Center,
+//             fontWeight = FontWeight.Bold
+//         )
+//         Spacer(Modifier.height(16.dp))
+//         Text(
+//             text = "（${card.dictionary}）",
+//             color = Color(0xFFB0BEC5),
+//             fontSize = 22.sp
+//         )
+//     }
+// }
 
 @Composable
 fun BackFace(card: VerbCard) {
     Column(
-        Modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF21262C))
             .padding(24.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.Start
     ) {
         Text(
             text = card.meaningEn,
             color = Color.White,
-            fontSize = 26.sp,
+            fontSize = 28.sp,
             fontWeight = FontWeight.SemiBold
         )
-        Spacer(Modifier.height(16.dp))
-        Entry("辞書形", card.dictionary)
+        Spacer(Modifier.height(20.dp))
         Entry("ます形", card.masu)
-        Entry("て形", card.te)
-        Entry("た形", card.ta)
-        Entry("ない形", card.nai)
+        Entry("ました形", card.mashita)
+        Entry("ません形", card.masen)
     }
 }
+
+// @Composable
+// fun BackFace(card: VerbCard) {
+//     Column(
+//         Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF21262C))
+//             .padding(24.dp),
+//         verticalArrangement = Arrangement.Center
+//     ) {
+//         Text(
+//             text = card.meaningEn,
+//             color = Color.White,
+//             fontSize = 26.sp,
+//             fontWeight = FontWeight.SemiBold
+//         )
+//         Spacer(Modifier.height(16.dp))
+//         Entry("辞書形", card.dictionary)
+//         Entry("ます形", card.masu)
+//         Entry("て形", card.te)
+//         Entry("た形", card.ta)
+//         Entry("ない形", card.nai)
+//     }
+// }
 
 @Composable
 private fun Entry(label: String, value: String) {
