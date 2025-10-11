@@ -27,11 +27,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.random.Random
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { App() }
+	val deck = loadVerbDeck(this)
+	setContent { App(deck) }
+        // setContent { App() }
     }
 }
 
@@ -45,18 +50,18 @@ data class VerbCard(
     val masen: String
 )
 
-val SampleDeck = listOf(
-    VerbCard("行く", "いく", "to go", "行きます", "行きました", "行きません"),
-    VerbCard("来る", "くる", "to come", "来ます", "来ました", "来ません"),
-    VerbCard("する", "する", "to do", "します", "しました", "しません"),
-    VerbCard("食べる", "たべる", "to eat", "食べます", "食べました", "食べません"),
-    VerbCard("見る", "みる", "to see / watch", "見ます", "見ました", "見ません"),
-    VerbCard("読む", "よむ", "to read", "読みます", "読みました", "読みません"),
-    VerbCard("書く", "かく", "to write", "書きます", "書きました", "書きません"),
-    VerbCard("話す", "はなす", "to speak", "話します", "話しました", "話しません"),
-    VerbCard("聞く", "きく", "to listen / ask", "聞きます", "聞きました", "聞きません"),
-    VerbCard("飲む", "のむ", "to drink", "飲みます", "飲みました", "飲みません"),
-)
+// val SampleDeck = listOf(
+//     VerbCard("行く", "いく", "to go", "行きます", "行きました", "行きません"),
+//     VerbCard("来る", "くる", "to come", "来ます", "来ました", "来ません"),
+//     VerbCard("する", "する", "to do", "します", "しました", "しません"),
+//     VerbCard("食べる", "たべる", "to eat", "食べます", "食べました", "食べません"),
+//     VerbCard("見る", "みる", "to see / watch", "見ます", "見ました", "見ません"),
+//     VerbCard("読む", "よむ", "to read", "読みます", "読みました", "読みません"),
+//     VerbCard("書く", "かく", "to write", "書きます", "書きました", "書きません"),
+//     VerbCard("話す", "はなす", "to speak", "話します", "話しました", "話しません"),
+//     VerbCard("聞く", "きく", "to listen / ask", "聞きます", "聞きました", "聞きません"),
+//     VerbCard("飲む", "のむ", "to drink", "飲みます", "飲みました", "飲みません"),
+// )
 
 // val SampleDeck = listOf(
 //     VerbCard("行く", "行き", "to go", "行きます", "行って", "行った", "行かない"),
@@ -79,6 +84,35 @@ val SampleDeck = listOf(
 //     VerbCard("出る", "出", "to leave / go out", "出ます", "出て", "出た", "出ない"),
 //     VerbCard("使う", "使い", "to use", "使います", "使って", "使った", "使わない"),
 // )
+
+fun loadVerbDeck(context: Context): List<VerbCard> {
+    val verbs = mutableListOf<VerbCard>()
+    val inputStream = context.resources.openRawResource(R.raw.verbs)
+    val reader = BufferedReader(InputStreamReader(inputStream))
+
+    // Skip the header line
+    reader.readLine()
+
+    reader.forEachLine { line ->
+        val parts = line.split(",")
+        if (parts.size >= 6) {
+            verbs.add(
+                VerbCard(
+                    dictionary = parts[0].trim(),
+                    hiragana = parts[1].trim(),
+                    meaningEn = parts[2].trim(),
+                    masu = parts[3].trim(),
+                    mashita = parts[4].trim(),
+                    masen = parts[5].trim()
+                )
+            )
+        }
+    }
+
+    reader.close()
+    return verbs
+}
+
 
 // -------------------- UI --------------------
 @Composable
@@ -107,13 +141,22 @@ fun FuriganaText(
 }
 
 @Composable
-fun App() {
-    MaterialTheme(colorScheme = MaterialTheme.colorScheme) {
+fun App(deck: List<VerbCard>) {
+    MaterialTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            FlashcardScreen(deck = SampleDeck)
+            FlashcardScreen(deck = deck)
         }
     }
 }
+
+// @Composable
+// fun App() {
+//     MaterialTheme(colorScheme = MaterialTheme.colorScheme) {
+//         Surface(modifier = Modifier.fillMaxSize()) {
+//             FlashcardScreen(deck = SampleDeck)
+//         }
+//     }
+// }
 
 @Composable
 fun FlashcardScreen(deck: List<VerbCard>) {

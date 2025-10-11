@@ -163,6 +163,7 @@ int layout notification_template_custom_big 0x7f070005
 int layout notification_template_icon_group 0x7f070006
 int layout notification_template_part_chronometer 0x7f070007
 int layout notification_template_part_time 0x7f070008
+int raw verbs 0x7f0b0000
 int string androidx_startup 0x7f080000
 int string call_notification_answer_action 0x7f080001
 int string call_notification_answer_video_action 0x7f080002
