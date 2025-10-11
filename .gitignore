@@ -4,3 +4,5 @@ echo ".idea/" >> .gitignore
 echo ".gradle/" >> .gitignore
 echo "local.properties" >> .gitignore
 echo "*.apk" >> .gitignore
+echo "*.~undo-tree~ >> .gitignore
+
