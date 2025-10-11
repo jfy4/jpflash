@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"0751bba8725b5d22d95611d2d8f91e632cf01a24"
+"b770060ebbb3288f5383b32d4cca9bbf6b8658a6"
 [nil nil nil nil (26855 53630 297923 383000) 0 nil]
 ([nil nil ((1 . 9216) (t . -1)) nil (26855 53630 297920 68000) 0 nil])
 ([nil nil ((410 . 411) (t 26855 53630 310415 765000)) nil (26855 58210 473224 386000) 0 nil])
@@ -352,5 +352,171 @@ import java.io.InputStreamReader
 ([nil nil ((nil rear-nonsticky nil 12409 . 12410) (nil fontified nil 11723 . 12410) (11723 . 12410)) nil (26858 40030 382247 584000) 0 nil])
 ([nil nil ((apply -66 12411 13080 undo--wrap-and-run-primitive-undo 12411 13080 ((13074 . 13077) (13065 . 13068) (13028 . 13031) (12989 . 12992) (12954 . 12957) (12912 . 12915) (12899 . 12902) (12851 . 12854) (12818 . 12821) (12782 . 12785) (12744 . 12747) (12727 . 12730) (12716 . 12719) (12667 . 12670) (12614 . 12617) (12582 . 12585) (12536 . 12539) (12506 . 12509) (12475 . 12478) (12460 . 12463) (12426 . 12429) (12411 . 12414) 13013))) nil (26858 40030 382243 590000) 0 nil])
 ([nil nil ((6849 . 6851) (t 26858 40030 384440 812000)) nil (26858 40071 841731 884000) 0 nil])
-([nil current ((nil rear-nonsticky nil 7736 . 7737) (nil fontified nil 6851 . 7737) (6851 . 7737)) nil (26858 40071 841728 272000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 7736 . 7737) (nil fontified nil 6851 . 7737) (6851 . 7737)) nil (26858 40071 841728 272000) 0 nil])
+([nil nil ((#("// data class VerbCard(
+//     val dictionary: String,   // Kanji
+//     val hiragana: String,     // Hiragana reading
+//     val meaningEn: String,    // English translation
+//     val masu: String,
+//     val mashita: String,
+//     val masen: String
+// )
+
+// val SampleDeck = listOf(
+//     VerbCard(\"行く\", \"いく\", \"to go\", \"行きます\", \"行きました\", \"行きません\"),
+//     VerbCard(\"来る\", \"くる\", \"to come\", \"来ます\", \"来ました\", \"来ません\"),
+//     VerbCard(\"する\", \"する\", \"to do\", \"します\", \"しました\", \"しません\"),
+//     VerbCard(\"食べる\", \"たべる\", \"to eat\", \"食べます\", \"食べました\", \"食べません\"),
+//     VerbCard(\"見る\", \"みる\", \"to see / watch\", \"見ます\", \"見ました\", \"見ません\"),
+//     VerbCard(\"読む\", \"よむ\", \"to read\", \"読みます\", \"読みました\", \"読みません\"),
+//     VerbCard(\"書く\", \"かく\", \"to write\", \"書きます\", \"書きました\", \"書きません\"),
+//     VerbCard(\"話す\", \"はなす\", \"to speak\", \"話します\", \"話しました\", \"話しません\"),
+//     VerbCard(\"聞く\", \"きく\", \"to listen / ask\", \"聞きます\", \"聞きました\", \"聞きません\"),
+//     VerbCard(\"飲む\", \"のむ\", \"to drink\", \"飲みます\", \"飲みました\", \"飲みません\"),
+// )
+
+// val SampleDeck = listOf(
+//     VerbCard(\"行く\", \"行き\", \"to go\", \"行きます\", \"行って\", \"行った\", \"行かない\"),
+//     VerbCard(\"来る\", \"来（き）\", \"to come\", \"来ます\", \"来て\", \"来た\", \"来ない\"),
+//     VerbCard(\"する\", \"し\", \"to do\", \"します\", \"して\", \"した\", \"しない\"),
+//     VerbCard(\"食べる\", \"食べ\", \"to eat\", \"食べます\", \"食べて\", \"食べた\", \"食べない\"),
+//     VerbCard(\"見る\", \"見\", \"to see / watch\", \"見ます\", \"見て\", \"見た\", \"見ない\"),
+//     VerbCard(\"読む\", \"読み\", \"to read\", \"読みます\", \"読んで\", \"読んだ\", \"読まない\"),
+//     VerbCard(\"書く\", \"書き\", \"to write\", \"書きます\", \"書いて\", \"書いた\", \"書かない\"),
+//     VerbCard(\"話す\", \"話し\", \"to speak\", \"話します\", \"話して\", \"話した\", \"話さない\"),
+//     VerbCard(\"聞く\", \"聞き\", \"to listen / ask\", \"聞きます\", \"聞いて\", \"聞いた\", \"聞かない\"),
+//     VerbCard(\"飲む\", \"飲み\", \"to drink\", \"飲みます\", \"飲んで\", \"飲んだ\", \"飲まない\"),
+//     VerbCard(\"買う\", \"買い\", \"to buy\", \"買います\", \"買って\", \"買った\", \"買わない\"),
+//     VerbCard(\"会う\", \"会い\", \"to meet\", \"会います\", \"会って\", \"会った\", \"会わない\"),
+//     VerbCard(\"歩く\", \"歩き\", \"to walk\", \"歩きます\", \"歩いて\", \"歩いた\", \"歩かない\"),
+//     VerbCard(\"走る\", \"走り\", \"to run\", \"走ります\", \"走って\", \"走った\", \"走らない\"),
+//     VerbCard(\"寝る\", \"寝\", \"to sleep\", \"寝ます\", \"寝て\", \"寝た\", \"寝ない\"),
+//     VerbCard(\"起きる\", \"起き\", \"to wake up\", \"起きます\", \"起きて\", \"起きた\", \"起きない\"),
+//     VerbCard(\"入る\", \"入り\", \"to enter\", \"入ります\", \"入って\", \"入った\", \"入らない\"),
+//     VerbCard(\"出る\", \"出\", \"to leave / go out\", \"出ます\", \"出て\", \"出た\", \"出ない\"),
+//     VerbCard(\"使う\", \"使い\", \"to use\", \"使います\", \"使って\", \"使った\", \"使わない\"),
+// )
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 24 (face font-lock-comment-face fontified t) 24 31 (face font-lock-comment-delimiter-face fontified t) 31 35 (face font-lock-comment-face fontified t) 35 45 (face font-lock-variable-name-face fontified t) 45 66 (face font-lock-comment-face fontified t) 66 73 (face font-lock-comment-delimiter-face fontified t) 73 77 (face font-lock-comment-face fontified t) 77 85 (face font-lock-variable-name-face fontified t) 85 119 (face font-lock-comment-face fontified t) 119 126 (face font-lock-comment-delimiter-face fontified t) 126 130 (face font-lock-comment-face fontified t) 130 139 (face font-lock-variable-name-face fontified t) 139 175 (face font-lock-comment-face fontified t) 175 182 (face font-lock-comment-delimiter-face fontified t) 182 186 (face font-lock-comment-face fontified t) 186 190 (face font-lock-variable-name-face fontified t) 190 200 (face font-lock-comment-face fontified t) 200 207 (face font-lock-comment-delimiter-face fontified t) 207 211 (face font-lock-comment-face fontified t) 211 218 (face font-lock-variable-name-face fontified t) 218 228 (face font-lock-comment-face fontified t) 228 235 (face font-lock-comment-delimiter-face fontified t) 235 239 (face font-lock-comment-face fontified t) 239 244 (face font-lock-variable-name-face fontified t) 244 253 (face font-lock-comment-face fontified t) 253 256 (face font-lock-comment-delimiter-face fontified t) 256 258 (face font-lock-comment-face fontified t) 258 259 (fontified t) 259 262 (face font-lock-comment-delimiter-face fontified t) 262 266 (face font-lock-comment-face fontified t) 266 276 (face font-lock-variable-name-face fontified t) 276 287 (face font-lock-comment-face fontified t) 287 294 (face font-lock-comment-delimiter-face fontified t) 294 351 (face font-lock-comment-face fontified t) 351 358 (face font-lock-comment-delimiter-face fontified t) 358 414 (face font-lock-comment-face fontified t) 414 421 (face font-lock-comment-delimiter-face fontified t) 421 475 (face font-lock-comment-face fontified t) 475 482 (face font-lock-comment-delimiter-face fontified t) 482 542 (face font-lock-comment-face fontified t) 542 549 (face font-lock-comment-delimiter-face fontified t) 549 612 (face font-lock-comment-face fontified t) 612 619 (face font-lock-comment-delimiter-face fontified t) 619 678 (face font-lock-comment-face fontified t) 678 685 (face font-lock-comment-delimiter-face fontified t) 685 745 (face font-lock-comment-face fontified t) 745 752 (face font-lock-comment-delimiter-face fontified t) 752 813 (face font-lock-comment-face fontified t) 813 820 (face font-lock-comment-delimiter-face fontified t) 820 887 (face font-lock-comment-face fontified t) 887 894 (face font-lock-comment-delimiter-face fontified t) 894 916 (face font-lock-comment-face fontified t) 916 954 (face font-lock-comment-face fontified t) 954 957 (face font-lock-comment-delimiter-face fontified t) 957 959 (face font-lock-comment-face fontified t) 959 960 (fontified t) 960 963 (face font-lock-comment-delimiter-face fontified t) 963 967 (face font-lock-comment-face fontified t) 967 977 (face font-lock-variable-name-face fontified t) 977 988 (face font-lock-comment-face fontified t) 988 995 (face font-lock-comment-delimiter-face fontified t) 995 1056 (face font-lock-comment-face fontified t) 1056 1063 (face font-lock-comment-delimiter-face fontified t) 1063 1124 (face font-lock-comment-face fontified t) 1124 1131 (face font-lock-comment-delimiter-face fontified t) 1131 1187 (face font-lock-comment-face fontified t) 1187 1194 (face font-lock-comment-delimiter-face fontified t) 1194 1257 (face font-lock-comment-face fontified t) 1257 1264 (face font-lock-comment-delimiter-face fontified t) 1264 1329 (face font-lock-comment-face fontified t) 1329 1336 (face font-lock-comment-delimiter-face fontified t) 1336 1399 (face font-lock-comment-face fontified t) 1399 1406 (face font-lock-comment-delimiter-face fontified t) 1406 1470 (face font-lock-comment-face fontified t) 1470 1477 (face font-lock-comment-delimiter-face fontified t) 1477 1541 (face font-lock-comment-face fontified t) 1541 1548 (face font-lock-comment-delimiter-face fontified t) 1548 1619 (face font-lock-comment-face fontified t) 1619 1626 (face font-lock-comment-delimiter-face fontified t) 1626 1690 (face font-lock-comment-face fontified t) 1690 1697 (face font-lock-comment-delimiter-face fontified t) 1697 1759 (face font-lock-comment-face fontified t) 1759 1766 (face font-lock-comment-delimiter-face fontified t) 1766 1829 (face font-lock-comment-face fontified t) 1829 1836 (face font-lock-comment-delimiter-face fontified t) 1836 1899 (face font-lock-comment-face fontified t) 1899 1906 (face font-lock-comment-delimiter-face fontified t) 1906 1968 (face font-lock-comment-face fontified t) 1968 1975 (face font-lock-comment-delimiter-face fontified t) 1975 2034 (face font-lock-comment-face fontified t) 2034 2041 (face font-lock-comment-delimiter-face fontified t) 2041 2108 (face font-lock-comment-face fontified t) 2108 2115 (face font-lock-comment-delimiter-face fontified t) 2115 2179 (face font-lock-comment-face fontified t) 2179 2186 (face font-lock-comment-delimiter-face fontified t) 2186 2254 (face font-lock-comment-face fontified t) 2254 2261 (face font-lock-comment-delimiter-face fontified t) 2261 2323 (face font-lock-comment-face fontified t) 2323 2326 (face font-lock-comment-delimiter-face fontified t) 2326 2328 (face font-lock-comment-face fontified t)) . -2101) (undo-tree-id24 . -2328) (undo-tree-id25 . -678) 4429 (t 26858 40186 48346 712000)) nil (26858 40248 335088 491000) 0 nil])
+([nil nil ((#("// fun loadVerbDeck(context: Context): List<VerbCard> {
+//     val verbs = mutableListOf<VerbCard>()
+//     val inputStream = context.resources.openRawResource(R.raw.verbs)
+//     val reader = BufferedReader(InputStreamReader(inputStream))
+
+//     // Skip the header line
+//     reader.readLine()
+
+//     reader.forEachLine { line ->
+//         val parts = line.split(\",\")
+//         if (parts.size >= 6) {
+//             verbs.add(
+//                 VerbCard(
+//                     dictionary = parts[0].trim(),
+//                     hiragana = parts[1].trim(),
+//                     meaningEn = parts[2].trim(),
+//                     masu = parts[3].trim(),
+//                     mashita = parts[4].trim(),
+//                     masen = parts[5].trim()
+//                 )
+//             )
+//         }
+//     }
+
+//     reader.close()
+//     return verbs
+// }
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 56 (face font-lock-comment-face fontified t) 56 63 (face font-lock-comment-delimiter-face fontified t) 63 67 (face font-lock-comment-face fontified t) 67 72 (face font-lock-variable-name-face fontified t) 72 101 (face font-lock-comment-face fontified t) 101 108 (face font-lock-comment-delimiter-face fontified t) 108 112 (face font-lock-comment-face fontified t) 112 123 (face font-lock-variable-name-face fontified t) 123 173 (face font-lock-comment-face fontified t) 173 180 (face font-lock-comment-delimiter-face fontified t) 180 184 (face font-lock-comment-face fontified t) 184 190 (face font-lock-variable-name-face fontified t) 190 240 (face font-lock-comment-face fontified t) 240 241 (fontified t) 241 248 (face font-lock-comment-delimiter-face fontified t) 248 272 (face font-lock-comment-face fontified t) 272 279 (face font-lock-comment-delimiter-face fontified t) 279 297 (face font-lock-comment-face fontified t) 297 298 (fontified t) 298 305 (face font-lock-comment-delimiter-face fontified t) 305 334 (face font-lock-comment-face fontified t) 334 345 (face font-lock-comment-delimiter-face fontified t) 345 349 (face font-lock-comment-face fontified t) 349 354 (face font-lock-variable-name-face fontified t) 354 373 (face font-lock-comment-face fontified t) 373 384 (face font-lock-comment-delimiter-face fontified t) 384 407 (face font-lock-comment-face fontified t) 407 422 (face font-lock-comment-delimiter-face fontified t) 422 433 (face font-lock-comment-face fontified t) 433 452 (face font-lock-comment-delimiter-face fontified t) 452 462 (face font-lock-comment-face fontified t) 462 485 (face font-lock-comment-delimiter-face fontified t) 485 515 (face font-lock-comment-face fontified t) 515 538 (face font-lock-comment-delimiter-face fontified t) 538 550 (face font-lock-comment-face fontified t) 550 566 (fontified t face font-lock-comment-face) 566 589 (face font-lock-comment-delimiter-face fontified t) 589 618 (face font-lock-comment-face fontified t) 618 641 (face font-lock-comment-delimiter-face fontified t) 641 665 (face font-lock-comment-face fontified t) 665 688 (face font-lock-comment-delimiter-face fontified t) 688 714 (face font-lock-comment-face fontified t) 714 715 (face font-lock-comment-face fontified t) 715 738 (face font-lock-comment-delimiter-face fontified t) 738 762 (face font-lock-comment-face fontified t) 762 781 (face font-lock-comment-delimiter-face fontified t) 781 783 (face font-lock-comment-face fontified t) 783 798 (face font-lock-comment-delimiter-face fontified t) 798 800 (face font-lock-comment-face fontified t) 800 811 (face font-lock-comment-delimiter-face fontified t) 811 813 (face font-lock-comment-face fontified t) 813 820 (face font-lock-comment-delimiter-face fontified t) 820 822 (face font-lock-comment-face fontified t) 822 823 (fontified t) 823 830 (face font-lock-comment-delimiter-face fontified t) 830 845 (face font-lock-comment-face fontified t) 845 852 (face font-lock-comment-delimiter-face fontified t) 852 865 (face font-lock-comment-face fontified t) 865 868 (face font-lock-comment-delimiter-face fontified t) 868 870 (face font-lock-comment-face fontified t)) . -3052) (undo-tree-id23 . -870) 3922) nil (26858 40248 335042 67000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . -3050) (undo-tree-id19 . -1) (undo-tree-id20 . -1) (#("
+" 0 1 (fontified t)) . -3051) (undo-tree-id21 . -1) (undo-tree-id22 . -1) 3052) nil (26858 40248 335041 16000) 0 nil])
+([nil nil ((#("// @Composable
+// fun App() {
+//     MaterialTheme(colorScheme = MaterialTheme.colorScheme) {
+//         Surface(modifier = Modifier.fillMaxSize()) {
+//             FlashcardScreen(deck = SampleDeck)
+//         }
+//     }
+// }
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 15 (face font-lock-comment-face fontified t) 15 18 (face font-lock-comment-delimiter-face fontified t) 18 30 (face font-lock-comment-face fontified t) 30 37 (face font-lock-comment-delimiter-face fontified t) 37 94 (face font-lock-comment-face fontified t) 94 105 (face font-lock-comment-delimiter-face fontified t) 105 150 (face font-lock-comment-face fontified t) 150 165 (face font-lock-comment-delimiter-face fontified t) 165 200 (face font-lock-comment-face fontified t) 200 211 (face font-lock-comment-delimiter-face fontified t) 211 213 (face font-lock-comment-face fontified t) 213 220 (face font-lock-comment-delimiter-face fontified t) 220 222 (face font-lock-comment-face fontified t) 222 225 (face font-lock-comment-delimiter-face fontified t) 225 227 (face font-lock-comment-face fontified t)) . -4716) (undo-tree-id18 . -227) 4943) nil (26858 40248 335038 622000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . -4715) (undo-tree-id16 . -1) (undo-tree-id17 . -1) 4716) nil (26858 40248 335037 576000) 0 nil])
+([nil nil ((#("// @Composable
+// fun FrontFace(card: VerbCard) {
+//     Column(
+//         Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF28303A))
+//             .padding(24.dp),
+//         horizontalAlignment = Alignment.CenterHorizontally,
+//         verticalArrangement = Arrangement.Center
+//     ) {
+//         Text(\"ます-stem\", color = Color(0xFF9AA0A6), fontSize = 18.sp)
+//         Spacer(Modifier.height(8.dp))
+//         Text(
+//             text = card.stem,
+//             color = Color.White,
+//             fontSize = 64.sp,
+//             lineHeight = 64.sp,
+//             textAlign = TextAlign.Center,
+//             fontWeight = FontWeight.Bold
+//         )
+//         Spacer(Modifier.height(16.dp))
+//         Text(
+//             text = \"（${card.dictionary}）\",
+//             color = Color(0xFFB0BEC5),
+//             fontSize = 22.sp
+//         )
+//     }
+// }
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 15 (face font-lock-comment-face fontified t) 15 18 (face font-lock-comment-delimiter-face fontified t) 18 50 (face font-lock-comment-face fontified t) 50 57 (face font-lock-comment-delimiter-face fontified t) 57 65 (face font-lock-comment-face fontified t) 65 76 (face font-lock-comment-delimiter-face fontified t) 76 85 (face font-lock-comment-face fontified t) 85 100 (face font-lock-comment-delimiter-face fontified t) 100 115 (face font-lock-comment-face fontified t) 115 130 (face font-lock-comment-delimiter-face fontified t) 130 161 (face font-lock-comment-face fontified t) 161 176 (face font-lock-comment-delimiter-face fontified t) 176 193 (face font-lock-comment-face fontified t) 193 204 (face font-lock-comment-delimiter-face fontified t) 204 256 (face font-lock-comment-face fontified t) 256 267 (face font-lock-comment-delimiter-face fontified t) 267 308 (face font-lock-comment-face fontified t) 308 315 (face font-lock-comment-delimiter-face fontified t) 315 319 (face font-lock-comment-face fontified t) 319 330 (face font-lock-comment-delimiter-face fontified t) 330 391 (face font-lock-comment-face fontified t) 391 402 (face font-lock-comment-delimiter-face fontified t) 402 432 (face font-lock-comment-face fontified t) 432 443 (face font-lock-comment-delimiter-face fontified t) 443 449 (face font-lock-comment-face fontified t) 449 464 (face font-lock-comment-delimiter-face fontified t) 464 482 (face font-lock-comment-face fontified t) 482 497 (face font-lock-comment-delimiter-face fontified t) 497 518 (face font-lock-comment-face fontified t) 518 533 (face font-lock-comment-delimiter-face fontified t) 533 551 (face font-lock-comment-face fontified t) 551 566 (face font-lock-comment-delimiter-face fontified t) 566 586 (face font-lock-comment-face fontified t) 586 601 (face font-lock-comment-delimiter-face fontified t) 601 631 (face font-lock-comment-face fontified t) 631 646 (face font-lock-comment-delimiter-face fontified t) 646 675 (face font-lock-comment-face fontified t) 675 686 (face font-lock-comment-delimiter-face fontified t) 686 688 (face font-lock-comment-face fontified t) 688 699 (face font-lock-comment-delimiter-face fontified t) 699 730 (face font-lock-comment-face fontified t) 730 741 (face font-lock-comment-delimiter-face fontified t) 741 747 (face font-lock-comment-face fontified t) 747 762 (face font-lock-comment-delimiter-face fontified t) 762 793 (face font-lock-comment-face fontified t) 793 808 (face font-lock-comment-delimiter-face fontified t) 808 835 (face font-lock-comment-face fontified t) 835 850 (face font-lock-comment-delimiter-face fontified t) 850 867 (face font-lock-comment-face fontified t) 867 878 (face font-lock-comment-delimiter-face fontified t) 878 880 (face font-lock-comment-face fontified t) 880 887 (face font-lock-comment-delimiter-face fontified t) 887 889 (face font-lock-comment-face fontified t) 889 892 (face font-lock-comment-delimiter-face fontified t) 892 894 (face font-lock-comment-face fontified t)) . -8288) (undo-tree-id15 . -894) 9182) nil (26858 40248 335036 247000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . -8287) (undo-tree-id13 . -1) (undo-tree-id14 . -1) 8288) nil (26858 40248 335035 382000) 0 nil])
+([nil nil ((#("// @Composable
+// fun BackFace(card: VerbCard) {
+//     Column(
+//         modifier = Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF21262C))
+//             .padding(24.dp),
+//         verticalArrangement = Arrangement.Center,
+//         horizontalAlignment = Alignment.Start
+//     ) {
+//         Text(
+//             text = card.meaningEn,
+//             color = Color.White,
+//             fontSize = 28.sp,
+//             fontWeight = FontWeight.SemiBold
+//         )
+//         Spacer(Modifier.height(20.dp))
+//         Entry(\"ます形\", card.masu)
+//         Entry(\"ました形\", card.mashita)
+//         Entry(\"ません形\", card.masen)
+//     }
+// }
+
+// @Composable
+// fun BackFace(card: VerbCard) {
+//     Column(
+//         Modifier
+//             .fillMaxSize()
+//             .background(Color(0xFF21262C))
+//             .padding(24.dp),
+//         verticalArrangement = Arrangement.Center
+//     ) {
+//         Text(
+//             text = card.meaningEn,
+//             color = Color.White,
+//             fontSize = 26.sp,
+//             fontWeight = FontWeight.SemiBold
+//         )
+//         Spacer(Modifier.height(16.dp))
+//         Entry(\"辞書形\", card.dictionary)
+//         Entry(\"ます形\", card.masu)
+//         Entry(\"て形\", card.te)
+//         Entry(\"た形\", card.ta)
+//         Entry(\"ない形\", card.nai)
+//     }
+// }
+" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 15 (face font-lock-comment-face fontified t) 15 18 (face font-lock-comment-delimiter-face fontified t) 18 49 (face font-lock-comment-face fontified t) 49 56 (face font-lock-comment-delimiter-face fontified t) 56 64 (face font-lock-comment-face fontified t) 64 75 (face font-lock-comment-delimiter-face fontified t) 75 95 (face font-lock-comment-face fontified t) 95 110 (face font-lock-comment-delimiter-face fontified t) 110 125 (face font-lock-comment-face fontified t) 125 140 (face font-lock-comment-delimiter-face fontified t) 140 171 (face font-lock-comment-face fontified t) 171 186 (face font-lock-comment-delimiter-face fontified t) 186 203 (face font-lock-comment-face fontified t) 203 214 (face font-lock-comment-delimiter-face fontified t) 214 256 (face font-lock-comment-face fontified t) 256 267 (face font-lock-comment-delimiter-face fontified t) 267 305 (face font-lock-comment-face fontified t) 305 312 (face font-lock-comment-delimiter-face fontified t) 312 316 (face font-lock-comment-face fontified t) 316 327 (face font-lock-comment-delimiter-face fontified t) 327 333 (face font-lock-comment-face fontified t) 333 348 (face font-lock-comment-delimiter-face fontified t) 348 371 (face font-lock-comment-face fontified t) 371 386 (face font-lock-comment-delimiter-face fontified t) 386 407 (face font-lock-comment-face fontified t) 407 422 (face font-lock-comment-delimiter-face fontified t) 422 440 (face font-lock-comment-face fontified t) 440 455 (face font-lock-comment-delimiter-face fontified t) 455 488 (face font-lock-comment-face fontified t) 488 499 (face font-lock-comment-delimiter-face fontified t) 499 501 (face font-lock-comment-face fontified t) 501 512 (face font-lock-comment-delimiter-face fontified t) 512 543 (face font-lock-comment-face fontified t) 543 554 (face font-lock-comment-delimiter-face fontified t) 554 578 (face font-lock-comment-face fontified t) 578 589 (face font-lock-comment-delimiter-face fontified t) 589 617 (face font-lock-comment-face fontified t) 617 628 (face font-lock-comment-delimiter-face fontified t) 628 654 (face font-lock-comment-face fontified t) 654 661 (face font-lock-comment-delimiter-face fontified t) 661 663 (face font-lock-comment-face fontified t) 663 666 (face font-lock-comment-delimiter-face fontified t) 666 668 (face font-lock-comment-face fontified t) 668 669 (fontified t) 669 672 (face font-lock-comment-delimiter-face fontified t) 672 684 (face font-lock-comment-face fontified t) 684 687 (face font-lock-comment-delimiter-face fontified t) 687 718 (face font-lock-comment-face fontified t) 718 725 (face font-lock-comment-delimiter-face fontified t) 725 733 (face font-lock-comment-face fontified t) 733 744 (face font-lock-comment-delimiter-face fontified t) 744 753 (face font-lock-comment-face fontified t) 753 768 (face font-lock-comment-delimiter-face fontified t) 768 783 (face font-lock-comment-face fontified t) 783 798 (face font-lock-comment-delimiter-face fontified t) 798 812 (face font-lock-comment-face fontified t) 812 829 (fontified t face font-lock-comment-face) 829 844 (face font-lock-comment-delimiter-face fontified t) 844 861 (face font-lock-comment-face fontified t) 861 872 (face font-lock-comment-delimiter-face fontified t) 872 913 (face font-lock-comment-face fontified t) 913 920 (face font-lock-comment-delimiter-face fontified t) 920 922 (face font-lock-comment-face fontified t) 922 924 (face font-lock-comment-face fontified t) 924 935 (face font-lock-comment-delimiter-face fontified t) 935 941 (face font-lock-comment-face fontified t) 941 956 (face font-lock-comment-delimiter-face fontified t) 956 979 (face font-lock-comment-face fontified t) 979 994 (face font-lock-comment-delimiter-face fontified t) 994 1015 (face font-lock-comment-face fontified t) 1015 1030 (face font-lock-comment-delimiter-face fontified t) 1030 1048 (face font-lock-comment-face fontified t) 1048 1063 (face font-lock-comment-delimiter-face fontified t) 1063 1096 (face font-lock-comment-face fontified t) 1096 1107 (face font-lock-comment-delimiter-face fontified t) 1107 1109 (face font-lock-comment-face fontified t) 1109 1120 (face font-lock-comment-delimiter-face fontified t) 1120 1151 (face font-lock-comment-face fontified t) 1151 1162 (face font-lock-comment-delimiter-face fontified t) 1162 1192 (face font-lock-comment-face fontified t) 1192 1203 (face font-lock-comment-delimiter-face fontified t) 1203 1227 (face font-lock-comment-face fontified t) 1227 1238 (face font-lock-comment-delimiter-face fontified t) 1238 1259 (face font-lock-comment-face fontified t) 1259 1270 (face font-lock-comment-delimiter-face fontified t) 1270 1291 (face font-lock-comment-face fontified t) 1291 1302 (face font-lock-comment-delimiter-face fontified t) 1302 1325 (face font-lock-comment-face fontified t) 1325 1332 (face font-lock-comment-delimiter-face fontified t) 1332 1334 (face font-lock-comment-face fontified t) 1334 1337 (face font-lock-comment-delimiter-face fontified t) 1337 1339 (face font-lock-comment-face fontified t)) . -8976) (undo-tree-id9 . -1339) (undo-tree-id10 . -654) (undo-tree-id11 . -1334) (undo-tree-id12 . -1339) 10315) nil (26858 40248 335033 919000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . -8975) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) (undo-tree-id8 . -1) 8976) nil (26858 40248 335029 642000) 0 nil])
 nil
