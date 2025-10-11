@@ -16,9 +16,7 @@ Built with **Kotlin** and **Jetpack Compose**, this project aims to make it easy
     - Past (行きました)
     - Negative (行きません)
 - 🗂️ Reads data from a local CSV file (e.g. `verbs.csv`)
-- 💾 Simple local storage for tracking known words (coming soon)
 - 🎨 Built using modern Android development practices with Kotlin and Jetpack Compose
-- 🌙 Dark mode support (optional)
 
 ---
 
