@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"7df5cb23efd4318185c8b5e5180a50c563245a29"
+"23296221eedfaffb53d9c45b5161c63be1bf3f9a"
 [nil nil nil nil (26858 38931 353060 887000) 0 nil]
 ([nil nil ((1 . 367) (t . -1)) nil (26858 38931 353057 389000) 0 nil])
 ([nil nil ((1 . 2) (t 26858 38931 354125 827000)) nil (26858 39959 355793 792000) 0 nil])
@@ -16,6 +16,26 @@
 聞く,きく,to listen / ask,聞きます,聞きました,聞きません
 飲む,のむ,to drink,飲みます,飲みました,飲みません
 " . -575) (undo-tree-id8 . -366) 941) nil (26858 39959 355792 699000) 0 nil])
-([nil current (("
+([nil nil (("
 " . -574) (undo-tree-id0 . -1) (undo-tree-id1 . 1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) 575) nil (26858 39959 355789 567000) 0 nil])
+([nil nil ((1 . 2) (t 26858 40186 49346 730000)) nil (26858 40751 672903 681000) 0 nil])
+([nil nil ((1 . 2)) nil (26858 40751 672903 301000) 0 nil])
+([nil nil ((1 . 5477)) nil (26858 40751 672902 645000) 0 nil])
+([nil nil (("dictionary,hiragana,meaningEn,masu,masuHiragana,mashita,mashitaHiragana,masen,masenHiragana
+行く,いく,to go,行きます,いきます,行きました,いきました,行きません,いきません
+来る,くる,to come,来ます,きます,来ました,きました,来ません,きません
+する,する,to do,します,します,しました,しました,しません,しません
+食べる,たべる,to eat,食べます,たべます,食べました,たべました,食べません,たべません
+見る,みる,to see / watch,見ます,みます,見ました,みました,見ません,みません
+読む,よむ,to read,読みます,よみます,読みました,よみました,読みません,よみません
+書く,かく,to write,書きます,かきます,書きました,かきました,書きません,かきません
+話す,はなす,to speak,話します,はなします,話しました,はなしました,話しません,はなしません
+聞く,きく,to listen / ask,聞きます,ききます,聞きました,ききました,聞きません,ききません
+飲む,のむ,to drink,飲みます,のみます,飲みました,のみました,飲みません,のみません
+" . -5479) (undo-tree-id16 . -573) 6052) nil (26858 40751 672901 619000) 0 nil])
+([nil nil (("
+" . -5477) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . 1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) ("
+" . -5478) (undo-tree-id8 . -1) (undo-tree-id9 . 1) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (undo-tree-id12 . -1) (undo-tree-id13 . -1) (undo-tree-id14 . -1) (undo-tree-id15 . -1) 5479) nil (26858 40751 672748 63000) 0 nil])
+([nil current (("使う,つかう,to use,使います,つかいます,使いました,つかいました,使いません,つかいません
+" . -661) (undo-tree-id17 . -51) (undo-tree-id18 . -13) (undo-tree-id19 . -13) (undo-tree-id20 . -13) (undo-tree-id21 . -13) (undo-tree-id22 . -13) (undo-tree-id23 . -13) (undo-tree-id24 . -13) (undo-tree-id25 . -13) (undo-tree-id26 . -13) (undo-tree-id27 . -13) (undo-tree-id28 . -13) (undo-tree-id29 . -13) (undo-tree-id30 . -13) (undo-tree-id31 . -13) 712 (t 26858 40751 685905 921000)) nil (26858 41078 84374 635000) 0 nil])
 nil
