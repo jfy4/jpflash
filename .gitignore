@@ -20,7 +20,7 @@ key.properties
 .DS_Store
 Thumbs.db
 ~$*
-.~undo-tree~
+*.~undo-tree~
 
 # === Optional: if you use Kotlin symbolic links or temp folders ===
 *.tmp
