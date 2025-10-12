@@ -29,97 +29,98 @@
 21        android:extractNativeLibs="false"
 22        android:label="JP Verb Cards"
 22-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:4:7-36
-23        android:theme="@android:style/Theme.DeviceDefault.NoActionBar" >
-23-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:5:7-69
-24        <activity
-24-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:6:5-13:16
-25            android:name="com.example.jpverbflashcards.MainActivity"
-25-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:7:9-37
-26            android:exported="true" >
-26-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:8:9-32
-27            <intent-filter>
-27-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:9:7-12:23
-28                <action android:name="android.intent.action.MAIN" />
-28-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:9-60
-28-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:17-58
-29
-30                <category android:name="android.intent.category.LAUNCHER" />
-30-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:9-68
-30-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:19-66
-31            </intent-filter>
-32        </activity>
-33        <activity
-33-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
-34            android:name="androidx.compose.ui.tooling.PreviewActivity"
-34-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
-35            android:exported="true" />
-35-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
-36
-37        <provider
-37-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
-38            android:name="androidx.startup.InitializationProvider"
-38-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
-39            android:authorities="com.example.jpverbflashcards.androidx-startup"
-39-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
-40            android:exported="false" >
-40-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
-41            <meta-data
-41-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
-42                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-42-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
-43                android:value="androidx.startup" />
-43-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
-44            <meta-data
-44-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:29:13-31:52
-45                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-45-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:30:17-78
-46                android:value="androidx.startup" />
-46-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:31:17-49
-47            <meta-data
-47-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
-48                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-48-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
-49                android:value="androidx.startup" />
-49-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
-50        </provider>
-51
-52        <receiver
-52-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
-53            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-53-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
-54            android:directBootAware="false"
-54-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
-55            android:enabled="true"
-55-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
-56            android:exported="true"
-56-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
-57            android:permission="android.permission.DUMP" >
-57-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
-58            <intent-filter>
-58-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
-59                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-59-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-59-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
-60            </intent-filter>
-61            <intent-filter>
-61-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
-62                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-62-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-62-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
-63            </intent-filter>
-64            <intent-filter>
-64-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
-65                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-65-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-65-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
-66            </intent-filter>
-67            <intent-filter>
-67-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
-68                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-68-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-68-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
-69            </intent-filter>
-70        </receiver>
-71    </application>
-72
-73</manifest>
+23        android:testOnly="true"
+24        android:theme="@android:style/Theme.DeviceDefault.NoActionBar" >
+24-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:5:7-69
+25        <activity
+25-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:6:5-13:16
+26            android:name="com.example.jpverbflashcards.MainActivity"
+26-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:7:9-37
+27            android:exported="true" >
+27-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:8:9-32
+28            <intent-filter>
+28-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:9:7-12:23
+29                <action android:name="android.intent.action.MAIN" />
+29-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:9-60
+29-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:17-58
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:9-68
+31-->/home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:19-66
+32            </intent-filter>
+33        </activity>
+34        <activity
+34-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
+35            android:name="androidx.compose.ui.tooling.PreviewActivity"
+35-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
+36            android:exported="true" />
+36-->[androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
+37
+38        <provider
+38-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+39            android:name="androidx.startup.InitializationProvider"
+39-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
+40            android:authorities="com.example.jpverbflashcards.androidx-startup"
+40-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
+41            android:exported="false" >
+41-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
+42            <meta-data
+42-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+43                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+43-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+44                android:value="androidx.startup" />
+44-->[androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+45            <meta-data
+45-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:29:13-31:52
+46                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+46-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:30:17-78
+47                android:value="androidx.startup" />
+47-->[androidx.lifecycle:lifecycle-process:2.8.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/ca7b2d3d58cfe08f061cf6c92c7bfb4c/transformed/jetified-lifecycle-process-2.8.6/AndroidManifest.xml:31:17-49
+48            <meta-data
+48-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+49                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+49-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+50                android:value="androidx.startup" />
+50-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+51        </provider>
+52
+53        <receiver
+53-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+54            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+54-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+55            android:directBootAware="false"
+55-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+56            android:enabled="true"
+56-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+57            android:exported="true"
+57-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+58            android:permission="android.permission.DUMP" >
+58-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+59            <intent-filter>
+59-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+60                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+60-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+60-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+61            </intent-filter>
+62            <intent-filter>
+62-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+63                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+63-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+63-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+64            </intent-filter>
+65            <intent-filter>
+65-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+66                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+66-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+66-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+67            </intent-filter>
+68            <intent-filter>
+68-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+69                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/7340cf5ba8b32c1101d65f37268afeb1/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+70            </intent-filter>
+71        </receiver>
+72    </application>
+73
+74</manifest>

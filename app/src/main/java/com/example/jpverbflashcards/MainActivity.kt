@@ -20,12 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.TextUnit
 import kotlin.random.Random
 import android.content.Context
 import java.io.BufferedReader
@@ -267,13 +269,64 @@ fun FrontFace(card: VerbCard) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF28303A))
+            .background(Color(0xFF1E1E1E))
             .padding(24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        FuriganaText(kanji = card.dictionary, hiragana = card.hiragana)
+        // Hiragana ABOVE the kanji
+        Text(
+            text = card.hiragana,
+            color = Color(0xFFB0BEC5),
+            fontSize = 22.sp,
+            lineHeight = 22.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 6.dp)
+        )
+
+        // Kanji (dictionary form) centered, auto-resizing
+        AutoResizeText(
+            text = card.dictionary,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            maxFontSize = 56.sp,
+            minFontSize = 28.sp,
+            modifier = Modifier
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
     }
+}
+
+@Composable
+fun AutoResizeText(
+    text: String,
+    color: Color,
+    fontWeight: FontWeight,
+    maxFontSize: TextUnit,
+    minFontSize: TextUnit,
+    modifier: Modifier = Modifier
+) {
+    var textSize by remember { mutableStateOf(maxFontSize) }
+    var readyToDraw by remember { mutableStateOf(false) }
+
+    Text(
+        text = text,
+        color = color,
+        fontSize = textSize,
+        fontWeight = fontWeight,
+        maxLines = 1,
+        softWrap = false,
+        modifier = modifier.drawWithContent {
+            if (readyToDraw) drawContent()
+        },
+        onTextLayout = { result ->
+            if (result.didOverflowWidth && textSize > minFontSize) {
+                textSize *= 0.9f
+            } else {
+                readyToDraw = true
+            }
+        }
+    )
 }
 
 @Composable

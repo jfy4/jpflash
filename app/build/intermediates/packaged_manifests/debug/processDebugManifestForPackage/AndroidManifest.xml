@@ -20,6 +20,7 @@
         android:debuggable="true"
         android:extractNativeLibs="false"
         android:label="JP Verb Cards"
+        android:testOnly="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar" >
         <activity
             android:name="com.example.jpverbflashcards.MainActivity"
