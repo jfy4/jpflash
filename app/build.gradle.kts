@@ -10,11 +10,11 @@ android {
 
 
     defaultConfig {
-        applicationId = "com.example.jpverbflashcards"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+	applicationId "com.digle.jpverbflashcards"
+	minSdkVersion 21
+	targetSdkVersion 34
+	versionCode 1      // increment this each release
+	versionName "1.0"
     }
 
     buildTypes {

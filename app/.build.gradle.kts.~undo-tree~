@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"89ca19e36edde37c2eac2848527bcee38fe5f890"
+"63cf5d474f822e7fab6477ef7d06ca72064b534f"
 [nil nil nil nil (26855 54485 215218 887000) 0 nil]
 ([nil nil ((" " . 1) ("m" . 1) ("j" . 1) (t 26855 54442 773914 780000)) nil (26855 54497 800555 862000) 0 nil] [nil nil ((1 . 182) (t 26855 54442 773914 780000)) (("plugins {
     id(\"com.android.application\") version \"8.6.1\"
@@ -28,11 +28,45 @@ kotlinOptions {
 ([nil nil ((261 . 265)) (("    " . 261)) (26855 56775 496164 964000) 0 nil])
 ([nil nil ((784 . 940)) nil (26855 56839 611581 459000) 0 nil])
 ([nil nil ((286 . 291)) (("		   " . 286)) (26855 56771 748764 516000) 0 nil])
-([nil current (("kotlinOptions {
+([nil nil (("kotlinOptions {
     jvmTarget = \"17\"
 }
 " . -901) (undo-tree-id3 . -39) 940) nil (26855 56839 611578 563000) 0 nil])
 ([nil nil ((355 . 364)) (("		       " . 355)) (26855 56771 320376 805000) 0 nil])
-nil
+([nil nil ((#("    " 0 4 (fontified nil)) . 262) (262 . 266) (262 . 263) (t 26855 56839 612052 188000)) nil (26859 1093 303508 879000) 0 nil])
 ([nil nil ((395 . 398)) (("   " . 395) (undo-tree-id2 . -3)) (26855 56771 320330 554000) 0 nil])
+([nil nil ((262 . 266)) nil (26859 1093 303508 405000) 0 nil])
+nil
+([nil nil ((nil rear-nonsticky nil 445 . 446) (nil fontified nil 266 . 446) (266 . 446)) nil (26859 1093 303508 4000) 0 nil])
+([nil nil ((282 . 283) (#("    " 0 4 (fontified t)) . 282)) nil (26859 1093 303507 372000) 0 nil])
+([nil nil ((320 . 321) (#("    " 0 4 (fontified t)) . 320) 328) nil (26859 1093 303506 916000) 0 nil])
+([nil nil ((338 . 339) (#("    " 0 4 (fontified t)) . 338) 350) nil (26859 1093 303506 346000) 0 nil])
+([nil nil ((359 . 360) (#("    " 0 4 (fontified t)) . 359) 375) nil (26859 1093 303505 974000) 0 nil])
+([nil nil ((410 . 411) (#("    " 0 4 (fontified t)) . 410) 430) nil (26859 1093 303505 279000) 0 nil])
+([nil nil ((429 . 433) 430) nil (26859 1094 455448 55000) 0 nil])
+([nil nil ((#("e" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("m" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("a" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("n" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("r" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("u" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("o" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("y" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302)) nil (26859 1124 788761 76000) 0 nil] [nil nil ((#("    defaultConfig {
+        applicationId = \"com.example.jpverbflashcards\"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = 1
+        versionName = \"1.0\"
+    }
+" 0 20 (fontified t) 20 44 (fontified t) 44 45 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 45 73 (face font-lock-string-face fontified t syntax-multiline t) 73 74 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 74 164 (fontified t) 164 165 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 165 168 (face font-lock-string-face fontified t syntax-multiline t) 168 169 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 169 176 (fontified t)) . -436) (undo-tree-id13 . -176) (undo-tree-id14 . -176) (undo-tree-id15 . -176) (undo-tree-id16 . -118) (undo-tree-id17 . -118) (undo-tree-id18 . -176) 612) ((436 . 612)) (26859 1093 754539 233000) 0 nil])
+([nil nil ((302 . 307)) nil (26859 1124 788760 435000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . -435) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) (undo-tree-id8 . -1) (undo-tree-id9 . -1) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (undo-tree-id12 . -1) 436) ((435 . 436)) (26859 1093 303667 51000) 0 nil])
+([nil nil ((#("p" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("p" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("a" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("r" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("u" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("o" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308) (#("y" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 308)) nil (26859 1124 788759 613000) 0 nil])
+([nil nil ((#("m" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("a" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("n" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("r" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("u" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("o" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302) (#("y" 0 1 (face font-lock-string-face syntax-multiline t fontified t)) . 302)) ((302 . 303) (302 . 303) (302 . 303) (302 . 303) (302 . 303) (302 . 303) (302 . 303)) (26859 1093 303476 564000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 323 . 324) (nil fontified nil 308 . 324) (308 . 324)) nil (26859 1124 788758 770000) 0 nil])
+nil
+([nil nil ((#("    defaultConfig {
+        applicationId = \"com.example.jpverbflashcards\"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = 1
+        versionName = \"1.0\"
+    }
+" 0 20 (fontified t) 20 44 (fontified t) 44 45 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 45 73 (face font-lock-string-face fontified t syntax-multiline t) 73 74 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 74 164 (fontified t) 164 165 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 165 168 (face font-lock-string-face fontified t syntax-multiline t) 168 169 (face font-lock-string-face fontified t syntax-multiline t syntax-table (15)) 169 176 (fontified t)) . -442) (undo-tree-id48 . -176) (undo-tree-id49 . -176) (undo-tree-id50 . -176) (undo-tree-id51 . -118) (undo-tree-id52 . -118) (undo-tree-id53 . -176) (undo-tree-id54 . -176) (undo-tree-id55 . -57) (undo-tree-id56 . -57) (undo-tree-id57 . -73) (undo-tree-id58 . -73) (undo-tree-id59 . -57) (undo-tree-id60 . -176) 618) nil (26859 1124 788757 724000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . -441) (undo-tree-id19 . -1) (undo-tree-id20 . -1) (undo-tree-id21 . -1) (undo-tree-id22 . -1) (undo-tree-id23 . -1) (undo-tree-id24 . -1) (undo-tree-id25 . -1) (undo-tree-id26 . -1) (undo-tree-id27 . -1) (undo-tree-id28 . -1) (undo-tree-id29 . -1) (undo-tree-id30 . -1) (undo-tree-id31 . -1) (undo-tree-id32 . -1) (undo-tree-id33 . -1) (undo-tree-id34 . -1) (undo-tree-id35 . -1) (undo-tree-id36 . -1) (undo-tree-id37 . -1) (undo-tree-id38 . -1) (undo-tree-id39 . -1) (undo-tree-id40 . -1) (undo-tree-id41 . -1) (undo-tree-id42 . -1) (undo-tree-id43 . -1) (undo-tree-id44 . -1) (undo-tree-id45 . -1) (undo-tree-id46 . -1) (undo-tree-id47 . -1) 442) nil (26859 1124 788747 746000) 0 nil])
 nil
