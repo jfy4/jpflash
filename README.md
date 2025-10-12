@@ -28,14 +28,14 @@ app/
 ├── src/
 │   ├── main/
 │   │   ├── java/com/example/flashcards/
-│   │   │   ├── MainActivity.kt
-│   │   │   ├── ui/
-│   │   │   └── data/
-│   │   │       └── verbs.csv
+│   │   │   └── MainActivity.kt
+│   │   │   
+│   │   │   
+│   │   │       
 │   │   └── res/
-│   │       ├── layout/
-│   │       ├── values/
+│   │       ├── raw/verbs.csv
 │   │       └── drawable/
+│   │       
 ├── build.gradle
 └── settings.gradle
 
