@@ -4,3 +4,5 @@
 .gradle/
 local.properties
 *.apk
+key.properties
+.~undo-tree~

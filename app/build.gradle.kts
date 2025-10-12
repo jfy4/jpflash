@@ -4,8 +4,14 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
 }
 
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    namespace = "com.example.jpverbflashcards"
+    namespace = "com.digle.jpverbflashcards"
     compileSdk = 35
 
     defaultConfig {
@@ -14,6 +20,15 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
     }
 
     buildTypes {
