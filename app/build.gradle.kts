@@ -8,13 +8,12 @@ android {
     namespace = "com.example.jpverbflashcards"
     compileSdk = 35
 
-
     defaultConfig {
-	applicationId "com.digle.jpverbflashcards"
-	minSdkVersion 21
-	targetSdkVersion 34
-	versionCode 1      // increment this each release
-	versionName "1.0"
+        applicationId = "com.digle.jpverbflashcards"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {

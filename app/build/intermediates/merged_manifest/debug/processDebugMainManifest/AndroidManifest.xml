@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jpverbflashcards"
+    package="com.digle.jpverbflashcards"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="35" />
+        android:minSdkVersion="21"
+        android:targetSdkVersion="34" />
 
     <permission
-        android:name="com.example.jpverbflashcards.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.digle.jpverbflashcards.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.jpverbflashcards.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.digle.jpverbflashcards.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:extractNativeLibs="false"
+        android:extractNativeLibs="true"
         android:label="JP Verb Cards"
         android:testOnly="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar" >
@@ -37,7 +37,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.jpverbflashcards.androidx-startup"
+            android:authorities="com.digle.jpverbflashcards.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
