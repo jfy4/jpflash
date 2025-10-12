@@ -1,8 +1,6 @@
-echo "/build/" >> .gitignore
-echo "*.iml" >> .gitignore
-echo ".idea/" >> .gitignore
-echo ".gradle/" >> .gitignore
-echo "local.properties" >> .gitignore
-echo "*.apk" >> .gitignore
-echo "*.~undo-tree~ >> .gitignore
-
+/build/
+*.iml
+.idea/
+.gradle/
+local.properties
+*.apk
