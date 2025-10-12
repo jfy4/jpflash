@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-15:12
-INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-15:12
-INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-15:12
-INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-15:12
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-17:12
+INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-17:12
+INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-17:12
+INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:1-17:12
 MERGED from [androidx.activity:activity:1.9.3] /home/judah/.gradle/caches/9.0-milestone-1/transforms/a269d7f365354fc8af113807b29b0ad7/transformed/jetified-activity-1.9.3/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e32c92483d202b4a354aeaeb00388554/transformed/jetified-material3-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/9299a9425fb298d8219d09df1b3d228f/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
@@ -59,8 +59,8 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/judah/.gradle/caches/9
 	xmlns:android
 		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:1:11-69
 application
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:2:3-14:17
-INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:2:3-14:17
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:2:3-16:17
+INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:2:3-16:17
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/judah/.gradle/caches/9.0-milestone-1/transforms/2a4c66fc064527e8e3232e1239c88cb9/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.emoji2:emoji2:1.3.0] /home/judah/.gradle/caches/9.0-milestone-1/transforms/e1844844230d01c6351b43b558599e8b/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
@@ -80,27 +80,31 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/judah/.gradle/caches/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/judah/.gradle/caches/9.0-milestone-1/transforms/fee5c8a37b070d6e6610f71db343c833/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:4:7-36
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:6:7-36
+	android:roundIcon
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:4:7-52
+	android:icon
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:3:7-41
 	android:allowBackup
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:3:7-33
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:5:7-33
 	android:theme
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:5:7-69
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:7:7-69
 activity#com.example.jpverbflashcards.MainActivity
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:6:5-13:16
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:8:5-15:16
 	android:exported
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:8:9-32
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:9-32
 	android:name
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:7:9-37
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:9:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:9:7-12:23
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:7-14:23
 action#android.intent.action.MAIN
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:9-60
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:12:9-60
 	android:name
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:10:17-58
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:12:17-58
 category#android.intent.category.LAUNCHER
-ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:9-68
+ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:13:9-68
 	android:name
-		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:11:19-66
+		ADDED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml:13:19-66
 uses-sdk
 INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/judah/JPVerbFlashcards/app/src/main/AndroidManifest.xml
