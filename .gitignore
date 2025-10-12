@@ -6,3 +6,15 @@ local.properties
 *.apk
 key.properties
 .~undo-tree~
+
+# Gradle build output
+/build/
+*/build/
+
+# Android Studio
+.idea/
+.gradle/
+local.properties
+
+# Log files
+*.log
