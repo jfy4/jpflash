@@ -1,20 +1,26 @@
-/build/
-*.iml
-.idea/
-.gradle/
-local.properties
-*.apk
-key.properties
-.~undo-tree~
-
-# Gradle build output
+# === Android / Gradle build ===
 /build/
 */build/
-
-# Android Studio
-.idea/
 .gradle/
 local.properties
+key.properties
 
-# Log files
+# === IDE (Android Studio / IntelliJ) ===
+.idea/
+*.iml
+
+# === Output / APKs ===
+*.apk
+*.aab
+
+# === Logs ===
 *.log
+
+# === OS / Editor junk ===
+.DS_Store
+Thumbs.db
+~$*
+.~undo-tree~
+
+# === Optional: if you use Kotlin symbolic links or temp folders ===
+*.tmp
