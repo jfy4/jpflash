@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,10 +27,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.listSaver
 import kotlin.random.Random
 import android.content.Context
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+import android.util.Log
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +60,33 @@ data class VerbCard(
     val mashita: String,      // Kanji ました form
     val mashitaHiragana: String, // Hiragana ました form
     val masen: String,        // Kanji ません form
-    val masenHiragana: String // Hiragana ません form
+    val masenHiragana: String, // Hiragana ません form
+    var rightCount: Int = 0,
+    var wrongCount: Int = 0,
+    var totalSeen: Int = 0
 )
+
+
+fun saveProgress(context: Context, cards: List<VerbCard>) {
+    val prefs = context.getSharedPreferences("verb_progress", Context.MODE_PRIVATE)
+    val editor = prefs.edit()
+    cards.forEachIndexed { i, card ->
+        editor.putInt("right_$i", card.rightCount)
+        editor.putInt("wrong_$i", card.wrongCount)
+        editor.putInt("seen_$i", card.totalSeen)
+    }
+    editor.apply()
+}
+
+fun loadProgress(context: Context, cards: MutableList<VerbCard>) {
+    val prefs = context.getSharedPreferences("verb_progress", Context.MODE_PRIVATE)
+    cards.forEachIndexed { i, card ->
+        card.rightCount = prefs.getInt("right_$i", 0)
+        card.wrongCount = prefs.getInt("wrong_$i", 0)
+        card.totalSeen = prefs.getInt("seen_$i", 0)
+    }
+}
+
 
 fun loadVerbDeck(context: Context): List<VerbCard> {
     val verbs = mutableListOf<VerbCard>()
@@ -153,30 +186,57 @@ fun App(deck: List<VerbCard>) {
     }
 }
 
+// -------------------- Flashcard Screen with Swipe Tracking --------------------
+
 @Composable
 fun FlashcardScreen(deck: List<VerbCard>) {
-    var currentIndex by remember { mutableStateOf(Random.nextInt(deck.size)) }
-    var previousIndex by remember { mutableStateOf<Int?>(null) }
+    val context = LocalContext.current
+
+    // 🧠 Persist deck state across recompositions & configuration changes
+    val cards = rememberSaveable(
+        saver = listSaver(
+            save = { list ->
+                list.map {
+                    "${it.dictionary}|${it.rightCount}|${it.wrongCount}|${it.totalSeen}"
+                }
+            },
+            restore = { saved ->
+                deck.map { original ->
+                    val entry = saved.find { it.startsWith(original.dictionary) }
+                    val parts = entry?.split("|") ?: listOf(original.dictionary, "0", "0", "0")
+                    original.copy(
+                        rightCount = parts[1].toInt(),
+                        wrongCount = parts[2].toInt(),
+                        totalSeen = parts[3].toInt()
+                    )
+                }.toMutableStateList()
+            }
+        )
+    ) {
+        deck.map { it.copy() }.toMutableStateList()
+    }
+
+    // 🧾 Load persisted progress only once (if any)
+    LaunchedEffect(Unit) { loadProgress(context, cards) }
+
+    var currentIndex by remember { mutableStateOf(weightedRandomIndex(cards)) }
     var isFlipped by remember { mutableStateOf(false) }
 
-    fun nextRandomCard() {
-        previousIndex = currentIndex
-        currentIndex = Random.nextInt(deck.size)
-        isFlipped = false
-    }
-
-    fun goPreviousCard() {
-        previousIndex?.let { prev ->
-            val tmp = currentIndex
-            currentIndex = prev
-            previousIndex = tmp
-            isFlipped = false
-        }
-    }
-
-    val card = deck[currentIndex]
     val swipeThresholdPx = with(LocalDensity.current) { 64.dp.toPx() }
     var dragX by remember { mutableStateOf(0f) }
+
+    fun nextCard(correct: Boolean) {
+        val card = cards[currentIndex]
+        card.totalSeen++
+        if (correct) card.rightCount++ else card.wrongCount++
+        saveProgress(context, cards)
+
+        Log.d("Flashcards", "Card: ${card.dictionary}, right=${card.rightCount}, wrong=${card.wrongCount}, total=${card.totalSeen}")
+        Log.d("Flashcards", "Object hash: ${card.hashCode()}")
+
+        currentIndex = weightedRandomIndex(cards)
+        isFlipped = false
+    }
 
     Box(
         modifier = Modifier
@@ -190,8 +250,8 @@ fun FlashcardScreen(deck: List<VerbCard>) {
                     },
                     onDragEnd = {
                         when {
-                            dragX > swipeThresholdPx -> nextRandomCard()
-                            dragX < -swipeThresholdPx -> goPreviousCard()
+                            dragX > swipeThresholdPx -> nextCard(true)
+                            dragX < -swipeThresholdPx -> nextCard(false)
                         }
                         dragX = 0f
                     },
@@ -201,7 +261,7 @@ fun FlashcardScreen(deck: List<VerbCard>) {
         contentAlignment = Alignment.Center
     ) {
         Flashcard(
-            card = card,
+            card = cards[currentIndex],
             isFlipped = isFlipped,
             onTap = { isFlipped = !isFlipped }
         )
@@ -213,9 +273,14 @@ fun FlashcardScreen(deck: List<VerbCard>) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Tap = flip • Swipe → = next • Swipe ← = previous",
+                text = "Tap = flip • Swipe → = correct • Swipe ← = incorrect",
                 color = Color(0xFF9AA0A6),
                 fontSize = 14.sp
+            )
+            Text(
+                text = "✅${cards[currentIndex].rightCount} ❌${cards[currentIndex].wrongCount} • Seen ${cards[currentIndex].totalSeen}",
+                color = Color(0xFF607D8B),
+                fontSize = 12.sp
             )
         }
     }
@@ -363,4 +428,17 @@ private fun Entry(label: String, value: String) {
         Text(label, color = Color(0xFF9AA0A6), fontSize = 18.sp)
         Text(value, color = Color(0xFFECEFF1), fontSize = 20.sp, fontWeight = FontWeight.Medium)
     }
+}
+
+fun weightedRandomIndex(cards: List<VerbCard>): Int {
+    val weights = cards.map { card ->
+        1f + 3f * (card.wrongCount.toFloat() / maxOf(1, card.totalSeen))
+    }
+    val totalWeight = weights.sum()
+    var r = Random.nextFloat() * totalWeight
+    for ((i, w) in weights.withIndex()) {
+        r -= w
+        if (r <= 0f) return i
+    }
+    return cards.lastIndex
 }
