@@ -11,6 +11,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,6 +33,7 @@ import kotlin.random.Random
 import android.content.Context
 import java.io.BufferedReader
 import java.io.InputStreamReader
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -250,16 +252,21 @@ fun Flashcard(
             .clickable(onClick = onTap), // ✅ replaces detectTapGestures
         contentAlignment = Alignment.Center
     ) {
+	
         if (rotation <= 90f) {
-            FrontFace(card)
+	    SelectionContainer {
+		FrontFace(card)
+	    }
         } else {
-            Box(
-                modifier = Modifier.graphicsLayer {
-                    rotationY = 180f
-                }
-            ) {
-                BackFace(card)
-            }
+	    Box(
+                    modifier = Modifier.graphicsLayer {
+			rotationY = 180f
+                    }
+	    ) {
+		SelectionContainer {
+		    BackFace(card)
+		}
+	    }
         }
     }
 }
