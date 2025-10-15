@@ -45,6 +45,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 	val deck = loadVerbDeck(this)
+	// Log.d("Deck", "Loaded ${deck.size} cards")
+	// val duplicates = deck.groupingBy { it.dictionary }.eachCount().filter { it.value > 1 }
+	// Log.d("Deck", "Duplicate dictionary entries: $duplicates")
 	setContent { App(deck) }
         // setContent { App() }
     }
@@ -66,14 +69,14 @@ data class VerbCard(
     var totalSeen: Int = 0
 )
 
-
 fun saveProgress(context: Context, cards: List<VerbCard>) {
     val prefs = context.getSharedPreferences("verb_progress", Context.MODE_PRIVATE)
     val editor = prefs.edit()
     cards.forEachIndexed { i, card ->
-        editor.putInt("right_$i", card.rightCount)
-        editor.putInt("wrong_$i", card.wrongCount)
-        editor.putInt("seen_$i", card.totalSeen)
+        val key = "${card.dictionary}_$i"       //  ← unique per card
+        editor.putInt("right_$key", card.rightCount)
+        editor.putInt("wrong_$key", card.wrongCount)
+        editor.putInt("seen_$key",  card.totalSeen)
     }
     editor.apply()
 }
@@ -81,9 +84,10 @@ fun saveProgress(context: Context, cards: List<VerbCard>) {
 fun loadProgress(context: Context, cards: MutableList<VerbCard>) {
     val prefs = context.getSharedPreferences("verb_progress", Context.MODE_PRIVATE)
     cards.forEachIndexed { i, card ->
-        card.rightCount = prefs.getInt("right_$i", 0)
-        card.wrongCount = prefs.getInt("wrong_$i", 0)
-        card.totalSeen = prefs.getInt("seen_$i", 0)
+        val key = "${card.dictionary}_$i"
+        card.rightCount = prefs.getInt("right_$key", 0)
+        card.wrongCount = prefs.getInt("wrong_$key", 0)
+        card.totalSeen  = prefs.getInt("seen_$key",  0)
     }
 }
 
@@ -192,32 +196,16 @@ fun App(deck: List<VerbCard>) {
 fun FlashcardScreen(deck: List<VerbCard>) {
     val context = LocalContext.current
 
-    // 🧠 Persist deck state across recompositions & configuration changes
-    val cards = rememberSaveable(
-        saver = listSaver(
-            save = { list ->
-                list.map {
-                    "${it.dictionary}|${it.rightCount}|${it.wrongCount}|${it.totalSeen}"
-                }
-            },
-            restore = { saved ->
-                deck.map { original ->
-                    val entry = saved.find { it.startsWith(original.dictionary) }
-                    val parts = entry?.split("|") ?: listOf(original.dictionary, "0", "0", "0")
-                    original.copy(
-                        rightCount = parts[1].toInt(),
-                        wrongCount = parts[2].toInt(),
-                        totalSeen = parts[3].toInt()
-                    )
-                }.toMutableStateList()
-            }
-        )
-    ) {
+    // Single in-memory source of truth (no rememberSaveable)
+    val cards = remember {
+        // Use copies so we can mutate counts without touching the raw deck
         deck.map { it.copy() }.toMutableStateList()
     }
 
-    // 🧾 Load persisted progress only once (if any)
-    LaunchedEffect(Unit) { loadProgress(context, cards) }
+    // Load persisted counts once
+    LaunchedEffect(Unit) {
+        loadProgress(context, cards)
+    }
 
     var currentIndex by remember { mutableStateOf(weightedRandomIndex(cards)) }
     var isFlipped by remember { mutableStateOf(false) }
@@ -226,17 +214,42 @@ fun FlashcardScreen(deck: List<VerbCard>) {
     var dragX by remember { mutableStateOf(0f) }
 
     fun nextCard(correct: Boolean) {
-        val card = cards[currentIndex]
-        card.totalSeen++
-        if (correct) card.rightCount++ else card.wrongCount++
-        saveProgress(context, cards)
-
-        Log.d("Flashcards", "Card: ${card.dictionary}, right=${card.rightCount}, wrong=${card.wrongCount}, total=${card.totalSeen}")
-        Log.d("Flashcards", "Object hash: ${card.hashCode()}")
-
-        currentIndex = weightedRandomIndex(cards)
-        isFlipped = false
+	val card = cards[currentIndex]
+	Log.d("Flashcards", "SWIPE START  correct=$correct")
+	Log.d("Flashcards", "Before: r=${card.rightCount}, w=${card.wrongCount}, t=${card.totalSeen}")
+	
+	if (correct) {
+            card.rightCount++
+            Log.d("Flashcards", "→ incremented RIGHT")
+	} else {
+            card.wrongCount++
+            Log.d("Flashcards", "→ incremented WRONG")
+	}
+	card.totalSeen++
+	
+	Log.d("Flashcards", "After: r=${card.rightCount}, w=${card.wrongCount}, t=${card.totalSeen}")
+	currentIndex = weightedRandomIndex(cards)
     }
+    // fun nextCard(correct: Boolean) {
+    //     val card = cards[currentIndex]
+    //     card.totalSeen++
+    //     if (correct) card.rightCount++ else card.wrongCount++
+
+    //     // Persist to disk (single source of truth for persistence)
+    //     // saveProgress(context, cards)
+
+    //     // Debug: identity should stay constant for same object
+    // 	Log.d("Flashcards", "---- SWIPE ----")
+    // 	Log.d("Flashcards", "Card before save: ${card.dictionary} right=${card.rightCount} wrong=${card.wrongCount} total=${card.totalSeen}")
+    // 	// saveProgress(context, cards)
+    // 	// loadProgress(context, cards)
+    // 	Log.d("Flashcards", "Card after reload: ${card.dictionary} right=${card.rightCount} wrong=${card.wrongCount} total=${card.totalSeen}")
+    // 	Log.d("Flashcards", "Swipe ${if (correct) "→ RIGHT (correct)" else "← LEFT (wrong)"}")
+
+
+    //     currentIndex = weightedRandomIndex(cards)
+    //     isFlipped = false
+    // }
 
     Box(
         modifier = Modifier
@@ -250,8 +263,8 @@ fun FlashcardScreen(deck: List<VerbCard>) {
                     },
                     onDragEnd = {
                         when {
-                            dragX > swipeThresholdPx -> nextCard(true)
-                            dragX < -swipeThresholdPx -> nextCard(false)
+                            dragX > -swipeThresholdPx -> nextCard(true)   // right = correct
+                            dragX < swipeThresholdPx -> nextCard(false) // left  = incorrect
                         }
                         dragX = 0f
                     },
@@ -277,8 +290,12 @@ fun FlashcardScreen(deck: List<VerbCard>) {
                 color = Color(0xFF9AA0A6),
                 fontSize = 14.sp
             )
+            // tiny debug overlay
             Text(
-                text = "✅${cards[currentIndex].rightCount} ❌${cards[currentIndex].wrongCount} • Seen ${cards[currentIndex].totalSeen}",
+                text = "id:${System.identityHashCode(cards[currentIndex])} " +
+                       "✅${cards[currentIndex].rightCount} " +
+                       "❌${cards[currentIndex].wrongCount} • " +
+                       "Seen ${cards[currentIndex].totalSeen}",
                 color = Color(0xFF607D8B),
                 fontSize = 12.sp
             )
