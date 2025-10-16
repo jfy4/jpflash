@@ -99,6 +99,16 @@ fun weightedRandomIndex(deck: List<VerbCard>, table: VerbStatsTable): Int {
     }
 
     val totalWeight = weights.sum()
+    // val probabilities = weights.map { it / totalWeight }
+    // val sumP = probabilities.sum()    
+    
+    // // Print a readable log entry for analysis
+    // val logSummary = deck.mapIndexed { i, card ->
+    // 	"${card.dictionary}: w=${"%.2f".format(weights[i])}, p=${"%.2f".format(probabilities[i])}"
+    // }.joinToString(" | ")
+    
+    // Log.d("Weights", logSummary)
+    // Log.d("Weights", "Σp = ${"%.3f".format(sumP)} (should be ~1.000)")
     var r = Random.nextFloat() * totalWeight
     for ((i, w) in weights.withIndex()) {
         r -= w
