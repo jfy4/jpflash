@@ -199,7 +199,8 @@ fun FlashcardScreen(deck: List<VerbCard>, statsTable: VerbStatsTable) {
                         dragX += dragAmount
                     },
 		    onDragEnd = {
-			Log.d("SwipeTest", "dragX = $dragX"); when {
+			// Log.d("SwipeTest", "dragX = $dragX");
+			when {
 			    dragX > swipeThresholdPx -> nextWeightedCard(true)    // 👉 swipe right = correct
 							dragX < -swipeThresholdPx -> nextWeightedCard(false)  // 👈 swipe left  = incorrect
 			}
@@ -231,7 +232,7 @@ fun FlashcardScreen(deck: List<VerbCard>, statsTable: VerbStatsTable) {
             Text(
                 text = "Tap = flip • Swipe 👉 = correct • Swipe 👈 = incorrect",
                 color = Color(0xFF607D8B),
-                fontSize = 16.sp
+                fontSize = 15.sp
             )
         }
     }
