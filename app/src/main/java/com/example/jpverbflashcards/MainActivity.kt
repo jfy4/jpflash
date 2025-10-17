@@ -1,5 +1,6 @@
 package com.example.jpverbflashcards
 
+
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -31,6 +32,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.IntOffset
+import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
@@ -99,16 +104,16 @@ fun weightedRandomIndex(deck: List<VerbCard>, table: VerbStatsTable): Int {
     }
 
     val totalWeight = weights.sum()
-    // val probabilities = weights.map { it / totalWeight }
-    // val sumP = probabilities.sum()    
+    val probabilities = weights.map { it / totalWeight }
+    val sumP = probabilities.sum()    
     
-    // // Print a readable log entry for analysis
-    // val logSummary = deck.mapIndexed { i, card ->
-    // 	"${card.dictionary}: w=${"%.2f".format(weights[i])}, p=${"%.2f".format(probabilities[i])}"
-    // }.joinToString(" | ")
+    // Print a readable log entry for analysis
+    val logSummary = deck.mapIndexed { i, card ->
+	"${card.dictionary}: w=${"%.2f".format(weights[i])}, p=${"%.2f".format(probabilities[i])}"
+    }.joinToString(" | ")
     
-    // Log.d("Weights", logSummary)
-    // Log.d("Weights", "Σp = ${"%.3f".format(sumP)} (should be ~1.000)")
+    Log.d("Weights", logSummary)
+    Log.d("Weights", "Σp = ${"%.3f".format(sumP)} (should be ~1.000)")
     var r = Random.nextFloat() * totalWeight
     for ((i, w) in weights.withIndex()) {
         r -= w
@@ -176,6 +181,8 @@ fun App(deck: List<VerbCard>) {
 @Composable
 fun FlashcardScreen(deck: List<VerbCard>, statsTable: VerbStatsTable) {
     val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()   // ✅ Add this
+
     var currentIndex by remember { mutableStateOf(Random.nextInt(deck.size)) }
     var isFlipped by remember { mutableStateOf(false) }
     var globalSeen by remember { mutableStateOf(0) }
@@ -195,50 +202,82 @@ fun FlashcardScreen(deck: List<VerbCard>, statsTable: VerbStatsTable) {
     }
 
     val card = deck[currentIndex]
-    val swipeThresholdPx = with(LocalDensity.current) { 64.dp.toPx() }
+    val swipeThresholdPx = with(LocalDensity.current) { 120.dp.toPx() }
+
     var dragX by remember { mutableStateOf(0f) }
+    var cardVisible by remember { mutableStateOf(true) }
+
+    val animatedX by animateFloatAsState(
+        targetValue = dragX,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)
+    )
+    val popScale by animateFloatAsState(
+        targetValue = if (cardVisible) 1f else 0.8f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy)
+    )
+    val alpha by animateFloatAsState(
+        targetValue = if (cardVisible) 1f else 0f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)
+    )
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF0E0E11))
-            .pointerInput(Unit) {
+            .pointerInput(card) {
                 detectHorizontalDragGestures(
                     onHorizontalDrag = { change, dragAmount ->
                         change.consume()
                         dragX += dragAmount
                     },
-		    onDragEnd = {
-			// Log.d("SwipeTest", "dragX = $dragX");
-			when {
-			    dragX > swipeThresholdPx -> nextWeightedCard(true)    // 👉 swipe right = correct
-							dragX < -swipeThresholdPx -> nextWeightedCard(false)  // 👈 swipe left  = incorrect
-			}
-			
-			dragX = 0f
-		    }
+                    onDragEnd = {
+                        when {
+                            dragX > swipeThresholdPx -> {
+                                cardVisible = false
+                                dragX = 1000f
+                                coroutineScope.launch {           // ✅ use coroutine instead
+                                    delay(150)
+                                    nextWeightedCard(true)
+                                    dragX = 0f
+                                    cardVisible = true
+                                }
+                            }
+                            dragX < -swipeThresholdPx -> {
+                                cardVisible = false
+                                dragX = -1000f
+                                coroutineScope.launch {
+                                    delay(150)
+                                    nextWeightedCard(false)
+                                    dragX = 0f
+                                    cardVisible = true
+                                }
+                            }
+                            else -> dragX = 0f
+                        }
+                    }
                 )
             },
         contentAlignment = Alignment.Center
     ) {
-        Flashcard(card = card, isFlipped = isFlipped, onTap = { isFlipped = !isFlipped })
+        Box(
+            modifier = Modifier
+                .offset { IntOffset(animatedX.roundToInt(), 0) }
+                .graphicsLayer(
+                    rotationZ = animatedX / 30f,
+                    scaleX = popScale,
+                    scaleY = popScale,
+                    alpha = alpha
+                )
+        ) {
+            Flashcard(card = card, isFlipped = isFlipped, onTap = { isFlipped = !isFlipped })
+        }
 
-        // Bottom overlay with info
         Column(
             Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val s = statsTable[card.dictionary]
-            val right = s?.rightCount ?: 0
-            val wrong = s?.wrongCount ?: 0
-            val total = right + wrong
-            // Text(
-            //     text = "✅$right ❌$wrong  •  Seen $total×  •  Global $globalSeen",
-            //     color = Color(0xFF9AA0A6),
-            //     fontSize = 14.sp
-            // )
             Text(
                 text = "Tap = flip • Swipe 👉 = correct • Swipe 👈 = incorrect",
                 color = Color(0xFF607D8B),
