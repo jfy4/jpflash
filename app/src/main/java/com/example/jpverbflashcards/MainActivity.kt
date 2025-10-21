@@ -1,5 +1,7 @@
 package com.example.jpverbflashcards
 
+
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,7 +10,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -19,52 +21,115 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.TextUnit
-import kotlin.random.Random
-import android.content.Context
+import androidx.compose.ui.unit.IntOffset
+import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import kotlinx.serialization.*
+import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.io.File
+// import java.io.*
+import kotlin.random.Random
+import android.util.Log
 
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-	val deck = loadVerbDeck(this)
-	setContent { App(deck) }
-        // setContent { App() }
+// ---------------------------------------------------------
+//  Data Models
+// ---------------------------------------------------------
+data class VerbCard(
+    val dictionary: String,
+    val hiragana: String,
+    val meaningEn: String,
+    val masu: String,
+    val masuHiragana: String,
+    val mashita: String,
+    val mashitaHiragana: String,
+    val masen: String,
+    val masenHiragana: String
+)
+
+@Serializable
+data class VerbStats(
+    var rightCount: Int = 0,
+    var wrongCount: Int = 0
+)
+
+typealias VerbStatsTable = MutableMap<String, VerbStats>
+
+// ---------------------------------------------------------
+//  JSON load/save for stats
+// ---------------------------------------------------------
+fun loadVerbStats(context: Context): VerbStatsTable {
+    val file = File(context.filesDir, "verb_stats.json")
+    if (!file.exists()) return mutableMapOf()
+    return try {
+        val text = file.readText()
+        val decoded = Json.decodeFromString<Map<String, VerbStats>>(text)
+        decoded.toMutableMap()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        mutableMapOf()
     }
 }
 
-// -------------------- Data Model --------------------
-data class VerbCard(
-    val dictionary: String,   // Kanji dictionary form
-    val hiragana: String,     // Hiragana for dictionary form
-    val meaningEn: String,    // English meaning
-    val masu: String,         // Kanji ます form
-    val masuHiragana: String, // Hiragana ます form
-    val mashita: String,      // Kanji ました form
-    val mashitaHiragana: String, // Hiragana ました form
-    val masen: String,        // Kanji ません form
-    val masenHiragana: String // Hiragana ません form
-)
+fun saveVerbStats(context: Context, table: VerbStatsTable) {
+    val text = Json.encodeToString(table)
+    File(context.filesDir, "verb_stats.json").writeText(text)
+}
 
+// ---------------------------------------------------------
+//  Weighted random draw
+// ---------------------------------------------------------
+fun weightedRandomIndex(deck: List<VerbCard>, table: VerbStatsTable): Int {
+    val weights = deck.map { card ->
+        val s = table[card.dictionary]
+        val right = s?.rightCount ?: 0
+        val wrong = s?.wrongCount ?: 0
+        val total = right + wrong
+        // Higher weight for cards you miss often
+        1f + 3f * (wrong.toFloat() / (total + 1))
+    }
+
+    val totalWeight = weights.sum()
+    val probabilities = weights.map { it / totalWeight }
+    val sumP = probabilities.sum()    
+    
+    // Print a readable log entry for analysis
+    val logSummary = deck.mapIndexed { i, card ->
+	"${card.dictionary}: w=${"%.2f".format(weights[i])}, p=${"%.2f".format(probabilities[i])}"
+    }.joinToString(" | ")
+    
+    Log.d("Weights", logSummary)
+    Log.d("Weights", "Σp = ${"%.3f".format(sumP)} (should be ~1.000)")
+    var r = Random.nextFloat() * totalWeight
+    for ((i, w) in weights.withIndex()) {
+        r -= w
+        if (r <= 0f) return i
+    }
+    return deck.lastIndex // fallback
+}
+
+// ---------------------------------------------------------
+//  Load CSV deck
+// ---------------------------------------------------------
 fun loadVerbDeck(context: Context): List<VerbCard> {
     val verbs = mutableListOf<VerbCard>()
     val inputStream = context.resources.openRawResource(R.raw.verbs)
     val reader = BufferedReader(InputStreamReader(inputStream))
-
-    // Skip header
-    reader.readLine()
-
+    reader.readLine() // skip header
     reader.forEachLine { line ->
         val parts = line.split(",")
         if (parts.size >= 9) {
@@ -83,160 +148,153 @@ fun loadVerbDeck(context: Context): List<VerbCard> {
             )
         }
     }
-
     reader.close()
     return verbs
 }
 
-// -------------------- UI --------------------
-@Composable
-fun FuriganaText(
-    kanji: String,
-    hiragana: String
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = hiragana,
-            color = Color(0xFFB0BEC5),
-            fontSize = 22.sp,
-            lineHeight = 22.sp
-        )
-        Text(
-            text = kanji,
-            color = Color.White,
-            fontSize = 64.sp,
-            fontWeight = FontWeight.Bold,
-            lineHeight = 64.sp
-        )
+// ---------------------------------------------------------
+//  Main Activity
+// ---------------------------------------------------------
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val deck = loadVerbDeck(this)
+        setContent { App(deck) }
     }
 }
 
-@Composable
-fun EntryFurigana(label: String, kanji: String, hiragana: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 6.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            label,
-            color = Color(0xFF9AA0A6),
-            fontSize = 18.sp
-        )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                text = hiragana,
-                color = Color(0xFFB0BEC5),
-                fontSize = 16.sp, // slightly smaller
-                lineHeight = 16.sp
-            )
-            Text(
-                text = kanji,
-                color = Color(0xFFECEFF1),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
-    }
-}
-
-
+// ---------------------------------------------------------
+//  UI Composables
+// ---------------------------------------------------------
 @Composable
 fun App(deck: List<VerbCard>) {
+    val context = LocalContext.current
+    val statsTable = remember { loadVerbStats(context) }
+
     MaterialTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            FlashcardScreen(deck = deck)
+            FlashcardScreen(deck, statsTable)
         }
     }
 }
 
 @Composable
-fun FlashcardScreen(deck: List<VerbCard>) {
-    var currentIndex by remember { mutableStateOf(Random.nextInt(deck.size)) }
-    var previousIndex by remember { mutableStateOf<Int?>(null) }
-    var isFlipped by remember { mutableStateOf(false) }
+fun FlashcardScreen(deck: List<VerbCard>, statsTable: VerbStatsTable) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()   // ✅ Add this
 
-    fun nextRandomCard() {
-        previousIndex = currentIndex
-        currentIndex = Random.nextInt(deck.size)
+    var currentIndex by remember { mutableStateOf(Random.nextInt(deck.size)) }
+    var isFlipped by remember { mutableStateOf(false) }
+    var globalSeen by remember { mutableStateOf(0) }
+
+    fun recordSwipe(correct: Boolean) {
+        val card = deck[currentIndex]
+        val entry = statsTable.getOrPut(card.dictionary) { VerbStats() }
+        if (correct) entry.rightCount++ else entry.wrongCount++
+        globalSeen++
+        saveVerbStats(context, statsTable)
+    }
+
+    fun nextWeightedCard(correct: Boolean) {
+        recordSwipe(correct)
+        currentIndex = weightedRandomIndex(deck, statsTable)
         isFlipped = false
     }
 
-    fun goPreviousCard() {
-        previousIndex?.let { prev ->
-            val tmp = currentIndex
-            currentIndex = prev
-            previousIndex = tmp
-            isFlipped = false
-        }
-    }
-
     val card = deck[currentIndex]
-    val swipeThresholdPx = with(LocalDensity.current) { 64.dp.toPx() }
+    val swipeThresholdPx = with(LocalDensity.current) { 120.dp.toPx() }
+
     var dragX by remember { mutableStateOf(0f) }
+    var cardVisible by remember { mutableStateOf(true) }
+
+    val animatedX by animateFloatAsState(
+        targetValue = dragX,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)
+    )
+    val popScale by animateFloatAsState(
+        targetValue = if (cardVisible) 1f else 0.8f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy)
+    )
+    val alpha by animateFloatAsState(
+        targetValue = if (cardVisible) 1f else 0f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)
+    )
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF0E0E11))
-            .pointerInput(Unit) {
-                detectDragGestures(
-                    onDrag = { change, dragAmount ->
+            .pointerInput(card) {
+                detectHorizontalDragGestures(
+                    onHorizontalDrag = { change, dragAmount ->
                         change.consume()
-                        dragX += dragAmount.x
+                        dragX += dragAmount
                     },
                     onDragEnd = {
                         when {
-                            dragX > swipeThresholdPx -> nextRandomCard()
-                            dragX < -swipeThresholdPx -> goPreviousCard()
+                            dragX > swipeThresholdPx -> {
+                                cardVisible = false
+                                dragX = 1000f
+                                coroutineScope.launch {           // ✅ use coroutine instead
+                                    delay(150)
+                                    nextWeightedCard(true)
+                                    dragX = 0f
+                                    cardVisible = true
+                                }
+                            }
+                            dragX < -swipeThresholdPx -> {
+                                cardVisible = false
+                                dragX = -1000f
+                                coroutineScope.launch {
+                                    delay(150)
+                                    nextWeightedCard(false)
+                                    dragX = 0f
+                                    cardVisible = true
+                                }
+                            }
+                            else -> dragX = 0f
                         }
-                        dragX = 0f
-                    },
-                    onDragCancel = { dragX = 0f }
+                    }
                 )
             },
         contentAlignment = Alignment.Center
     ) {
-        Flashcard(
-            card = card,
-            isFlipped = isFlipped,
-            onTap = { isFlipped = !isFlipped }
-        )
+        Box(
+            modifier = Modifier
+                .offset { IntOffset(animatedX.roundToInt(), 0) }
+                .graphicsLayer(
+                    rotationZ = animatedX / 30f,
+                    scaleX = popScale,
+                    scaleY = popScale,
+                    alpha = alpha
+                )
+        ) {
+            Flashcard(card = card, isFlipped = isFlipped, onTap = { isFlipped = !isFlipped })
+        }
 
         Column(
             Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 24.dp),
+                .padding(bottom = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Tap = flip • Swipe → = next • Swipe ← = previous",
-                color = Color(0xFF9AA0A6),
-                fontSize = 14.sp
+                text = "Tap = flip • Swipe 👉 = correct • Swipe 👈 = incorrect",
+                color = Color(0xFF607D8B),
+                fontSize = 15.sp
             )
         }
     }
 }
 
 @Composable
-fun Flashcard(
-    card: VerbCard,
-    isFlipped: Boolean,
-    onTap: () -> Unit
-) {
+fun Flashcard(card: VerbCard, isFlipped: Boolean, onTap: () -> Unit) {
     val rotation by animateFloatAsState(
         targetValue = if (isFlipped) 180f else 0f,
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
         label = "flip"
     )
-
     val cameraDistance = with(LocalDensity.current) { 16.dp.toPx() }
-
 
     Box(
         modifier = Modifier
@@ -249,24 +307,16 @@ fun Flashcard(
                 this.cameraDistance = cameraDistance
             }
             .background(Color(0xFF1C1F24))
-            .clickable(onClick = onTap), // ✅ replaces detectTapGestures
+            .clickable(onClick = onTap),
         contentAlignment = Alignment.Center
     ) {
 	
         if (rotation <= 90f) {
-	    SelectionContainer {
-		FrontFace(card)
-	    }
+            SelectionContainer { FrontFace(card) }
         } else {
-	    Box(
-                    modifier = Modifier.graphicsLayer {
-			rotationY = 180f
-                    }
-	    ) {
-		SelectionContainer {
-		    BackFace(card)
-		}
-	    }
+            Box(modifier = Modifier.graphicsLayer { rotationY = 180f }) {
+                SelectionContainer { BackFace(card) }
+            }
         }
     }
 }
@@ -281,7 +331,6 @@ fun FrontFace(card: VerbCard) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Hiragana ABOVE the kanji
         Text(
             text = card.hiragana,
             color = Color(0xFFB0BEC5),
@@ -290,50 +339,15 @@ fun FrontFace(card: VerbCard) {
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(bottom = 6.dp)
         )
-
-        // Kanji (dictionary form) centered, auto-resizing
         AutoResizeText(
             text = card.dictionary,
             color = Color.White,
             fontWeight = FontWeight.Bold,
             maxFontSize = 56.sp,
             minFontSize = 28.sp,
-            modifier = Modifier
-                .wrapContentWidth(Alignment.CenterHorizontally)
+            modifier = Modifier.wrapContentWidth(Alignment.CenterHorizontally)
         )
     }
-}
-
-@Composable
-fun AutoResizeText(
-    text: String,
-    color: Color,
-    fontWeight: FontWeight,
-    maxFontSize: TextUnit,
-    minFontSize: TextUnit,
-    modifier: Modifier = Modifier
-) {
-    var textSize by remember { mutableStateOf(maxFontSize) }
-    var readyToDraw by remember { mutableStateOf(false) }
-
-    Text(
-        text = text,
-        color = color,
-        fontSize = textSize,
-        fontWeight = fontWeight,
-        maxLines = 1,
-        softWrap = false,
-        modifier = modifier.drawWithContent {
-            if (readyToDraw) drawContent()
-        },
-        onTextLayout = { result ->
-            if (result.didOverflowWidth && textSize > minFontSize) {
-                textSize *= 0.9f
-            } else {
-                readyToDraw = true
-            }
-        }
-    )
 }
 
 @Composable
@@ -360,14 +374,54 @@ fun BackFace(card: VerbCard) {
 }
 
 @Composable
-private fun Entry(label: String, value: String) {
+fun AutoResizeText(
+    text: String,
+    color: Color,
+    fontWeight: FontWeight,
+    maxFontSize: TextUnit,
+    minFontSize: TextUnit,
+    modifier: Modifier = Modifier
+) {
+    var textSize by remember { mutableStateOf(maxFontSize) }
+    var readyToDraw by remember { mutableStateOf(false) }
+    Text(
+        text = text,
+        color = color,
+        fontSize = textSize,
+        fontWeight = fontWeight,
+        maxLines = 1,
+        softWrap = false,
+        modifier = modifier.drawWithContent { if (readyToDraw) drawContent() },
+        onTextLayout = { result ->
+            if (result.didOverflowWidth && textSize > minFontSize) textSize *= 0.9f
+            else readyToDraw = true
+        }
+    )
+}
+
+@Composable
+fun EntryFurigana(label: String, kanji: String, hiragana: String) {
     Row(
-        Modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(label, color = Color(0xFF9AA0A6), fontSize = 18.sp)
-        Text(value, color = Color(0xFFECEFF1), fontSize = 20.sp, fontWeight = FontWeight.Medium)
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = hiragana,
+                color = Color(0xFFB0BEC5),
+                fontSize = 16.sp,
+                lineHeight = 16.sp
+            )
+            Text(
+                text = kanji,
+                color = Color(0xFFECEFF1),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
     }
 }

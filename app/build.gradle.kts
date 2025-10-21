@@ -5,6 +5,7 @@ plugins {
     id("com.android.application") version "8.13.0"
     id("org.jetbrains.kotlin.android") version "2.0.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"  // ✅ add this line
 }
 
 val keystorePropertiesFile = rootProject.file("key.properties")
@@ -60,6 +61,7 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")  // ✅ add this line
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
