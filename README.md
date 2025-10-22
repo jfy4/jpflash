@@ -15,6 +15,8 @@ Built with **Kotlin** and **Jetpack Compose**, this project aims to make it easy
     - Present (行きます)
     - Past (行きました)
     - Negative (行きません)
+- ☝️ Tap to flip the card, 👉 Swipe right if you know it, 👈 Swipe left if you don't
+- 🧠 The app shows you cards you miss more often
 - 🗂️ Reads data from a local CSV file (e.g. `verbs.csv`)
 - 🎨 Built using modern Android development practices with Kotlin and Jetpack Compose
 
@@ -43,7 +45,7 @@ app/
 
 ---
 
-## 🧠 Example Data (verbs.csv)
+## ❓ Example Data (verbs.csv)
 
 ```csv
 dictionary,hiragana,meaningEn,masu,masuHiragana,mashita,mashitaHiragana,masen,masenHiragana
